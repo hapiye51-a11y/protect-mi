@@ -1,0 +1,53 @@
+<view class="container">
+  <!-- 我的排名 -->
+  <view class="my-rank-card">
+    <view class="rank-header">
+      <text class="rank-title">我的排名</text>
+      <text class="rank-badge">第 {{myRank.rank}} 名</text>
+    </view>
+    <view class="rank-info">
+      <text class="rank-avatar">👤</text>
+      <text class="rank-name">{{myRank.name}}</text>
+      <text class="rank-count">已救助 {{myRank.count}} 次</text>
+    </view>
+  </view>
+
+  <!-- 榜单列表 -->
+  <view class="leaderboard-section">
+    <view class="section-header">
+      <text class="section-title">🏆 爱心榜单</text>
+      <text class="section-desc">感谢每一位爱心人士</text>
+    </view>
+
+    <view class="leaderboard-list">
+      <view 
+        class="leaderboard-item {{item.rank <= 3 ? 'top-three' : ''}}" 
+        wx:for="{{leaderboard}}" 
+        wx:key="rank"
+        bindtap="onUserTap"
+        data-user="{{item}}">
+        <view class="item-rank">
+          <text class="rank-number">{{item.rank}}</text>
+        </view>
+        <view class="item-avatar">
+          <text class="avatar-emoji">{{item.avatar}}</text>
+        </view>
+        <view class="item-info">
+          <text class="item-name">{{item.badge}} {{item.name}}</text>
+          <text class="item-count">救助 {{item.count}} 次</text>
+        </view>
+        <view class="item-action">
+          <text class="action-icon">❤️</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分享按钮 -->
+  <view class="share-section">
+    <button class="share-btn" bindtap="onShare">
+      <text class="share-icon">📤</text>
+      <text class="share-text">邀请好友一起献爱心</text>
+    </button>
+  </view>
+</view>

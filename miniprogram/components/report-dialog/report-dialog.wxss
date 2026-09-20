@@ -1,0 +1,369 @@
+/* 半屏弹窗 - 现代简约设计 */
+.dialog-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dialog-container {
+  width: 100%;
+  max-height: 85vh;
+  background: #FFFFFF;
+  border-radius: 32rpx 32rpx 0 0;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* 头部 */
+.dialog-header {
+  position: relative;
+  padding: 32rpx 24rpx 24rpx;
+  border-bottom: 1rpx solid #F3F4F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #1F2937;
+  letter-spacing: 0.5rpx;
+}
+
+.close-btn {
+  position: absolute;
+  right: 24rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F9FAFB;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-btn:active {
+  background: #F3F4F6;
+  transform: translateY(-50%) scale(0.95);
+}
+
+.close-icon {
+  font-size: 32rpx;
+  color: #6B7280;
+  font-weight: 300;
+}
+
+/* 内容区域 */
+.dialog-content {
+  flex: 1;
+  padding: 24rpx 24rpx 32rpx;
+  overflow-y: scroll;
+}
+
+/* 模板提示 */
+.template-hint {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE5CC 100%);
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 32rpx;
+  border: 1.5rpx solid #FFD9A8;
+}
+
+.hint-icon {
+  font-size: 32rpx;
+  line-height: 1;
+}
+
+.hint-text {
+  font-size: 26rpx;
+  color: #92400E;
+  font-weight: 500;
+  letter-spacing: 0.3rpx;
+}
+
+/* 表单区域 */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28rpx;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.form-label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.3rpx;
+}
+
+.required {
+  color: #EF4444;
+  font-size: 24rpx;
+}
+
+/* 单选按钮组 */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 20rpx;
+  background: #F9FAFB;
+  border-radius: 12rpx;
+  border: 2rpx solid #E5E7EB;
+  transition: all 0.3s ease;
+}
+
+.radio-item.active {
+  background: #FFF4ED;
+  border-color: #FF9654;
+}
+
+.radio-icon {
+  font-size: 32rpx;
+  color: #D1D5DB;
+}
+
+.radio-item.active .radio-icon {
+  color: #FF9654;
+}
+
+.radio-label {
+  font-size: 26rpx;
+  color: #6B7280;
+  letter-spacing: 0.3rpx;
+}
+
+.radio-item.active .radio-label {
+  color: #92400E;
+  font-weight: 500;
+}
+
+/* 输入框 */
+.form-input {
+  background: #F9FAFB;
+  border: 2rpx solid #E5E7EB;
+  border-radius: 12rpx;
+  padding: 24rpx 20rpx;
+  font-size: 26rpx;
+  color: #1F2937;
+  letter-spacing: 0.3rpx;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  background: #FFFFFF;
+  border-color: #FF9654;
+}
+
+/* 文本域 */
+.form-textarea {
+  background: #F9FAFB;
+  border: 2rpx solid #E5E7EB;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 26rpx;
+  color: #1F2937;
+  letter-spacing: 0.3rpx;
+  min-height: 240rpx;
+  line-height: 1.6;
+}
+
+.char-count {
+  align-self: flex-end;
+  font-size: 22rpx;
+  color: #9CA3AF;
+  letter-spacing: 0.3rpx;
+  margin-top: -8rpx;
+}
+
+/* 上传区域 */
+.upload-area {
+  background: #F9FAFB;
+  border: 2rpx dashed #D1D5DB;
+  border-radius: 12rpx;
+  padding: 40rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  transition: all 0.3s ease;
+}
+
+.upload-area:active {
+  background: #F3F4F6;
+  border-color: #FF9654;
+}
+
+.upload-icon {
+  font-size: 56rpx;
+  line-height: 1;
+}
+
+.upload-text {
+  font-size: 26rpx;
+  color: #374151;
+  font-weight: 500;
+  letter-spacing: 0.3rpx;
+}
+
+.upload-hint {
+  font-size: 22rpx;
+  color: #9CA3AF;
+  letter-spacing: 0.3rpx;
+}
+
+/* 文件列表 */
+.file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  margin-top: 12rpx;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 16rpx 20rpx;
+  background: #ECFDF5;
+  border-radius: 8rpx;
+  border: 1rpx solid #A7F3D0;
+}
+
+.file-icon {
+  font-size: 24rpx;
+  color: #10B981;
+  font-weight: 700;
+}
+
+.file-name {
+  font-size: 24rpx;
+  color: #047857;
+  letter-spacing: 0.3rpx;
+}
+
+/* 警告框 */
+.warning-box {
+  background: linear-gradient(135deg, #FEF2F2 0%, #FFEBEE 100%);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  display: flex;
+  gap: 16rpx;
+  margin-top: 32rpx;
+  border: 1.5rpx solid #FECACA;
+}
+
+.warning-icon {
+  font-size: 32rpx;
+  line-height: 1;
+  margin-top: 4rpx;
+}
+
+.warning-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.warning-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #991B1B;
+  letter-spacing: 0.3rpx;
+  margin-bottom: 4rpx;
+}
+
+.warning-text {
+  font-size: 24rpx;
+  color: #B91C1C;
+  letter-spacing: 0.3rpx;
+  line-height: 1.5;
+}
+
+/* 底部按钮 */
+.dialog-footer {
+  padding: 20rpx 24rpx 32rpx;
+  border-top: 1rpx solid #F3F4F6;
+  display: flex;
+  gap: 16rpx;
+  background: #FFFFFF;
+}
+
+.footer-btn {
+  flex: 1;
+  padding: 28rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5rpx;
+}
+
+.footer-btn.cancel {
+  background: #F9FAFB;
+  border: 2rpx solid #E5E7EB;
+}
+
+.footer-btn.cancel:active {
+  background: #F3F4F6;
+  transform: scale(0.98);
+}
+
+.footer-btn.cancel .btn-text {
+  color: #6B7280;
+  font-size: 28rpx;
+}
+
+.footer-btn.submit {
+  background: linear-gradient(135deg, #FF9654 0%, #FF7B54 100%);
+  box-shadow: 0 4rpx 16rpx rgba(255, 150, 84, 0.3);
+}
+
+.footer-btn.submit:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 12rpx rgba(255, 150, 84, 0.2);
+}
+
+.footer-btn.submit .btn-text {
+  color: #FFFFFF;
+  font-size: 28rpx;
+}

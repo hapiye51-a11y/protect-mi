@@ -1,0 +1,64 @@
+<view class="container">
+  <!-- 无权限提示 -->
+  <view class="no-permission" wx:if="{{!isAdmin && !loading}}">
+    <text class="no-permission-icon">🔒</text>
+    <text class="no-permission-text">无访问权限</text>
+    <text class="no-permission-hint">仅管理员可访问此页面</text>
+  </view>
+
+  <!-- 管理员内容 -->
+  <view class="admin-content" wx:if="{{isAdmin}}">
+    <!-- 标签切换 -->
+    <view class="tabs">
+      <view class="tab {{tab === 'pending' ? 'active' : ''}}" bindtap="switchTab" data-tab="pending">
+        <text>待审核</text>
+        <text class="badge" wx:if="{{pendingCount > 0}}">{{pendingCount}}</text>
+      </view>
+      <view class="tab {{tab === 'approved' ? 'active' : ''}}" bindtap="switchTab" data-tab="approved">
+        <text>已批准</text>
+      </view>
+      <view class="tab {{tab === 'rejected' ? 'active' : ''}}" bindtap="switchTab" data-tab="rejected">
+        <text>已拒绝</text>
+      </view>
+    </view>
+
+    <!-- 列表 -->
+    <view class="list" wx:if="{{!loading && cats.length > 0}}">
+      <view class="cat-card" wx:for="{{cats}}" wx:key="_id">
+        <view class="cat-image" bindtap="viewDetail" data-id="{{item._id}}">
+          <image wx:if="{{item.photos && item.photos[0]}}" src="{{item.photos[0]}}" mode="aspectFill" />
+          <text wx:else class="placeholder-emoji">🐱</text>
+        </view>
+        <view class="cat-info">
+          <view class="cat-header">
+            <text class="cat-name">{{item.name}}</text>
+            <text class="cat-status {{item.status}}">{{item.status === 'pending' ? '待审核' : item.status === 'available' ? '已批准' : '已拒绝'}}</text>
+          </view>
+          <text class="cat-meta">{{item.breed || '未知品种'}} · {{item.age || '未知年龄'}}</text>
+          <text class="cat-desc">{{item.description || '暂无描述'}}</text>
+          <text class="cat-time">提交时间：{{item.createTimeText}}</text>
+          <text class="cat-reporter">提交人：{{item.reporter && item.reporter.nickName ? item.reporter.nickName : '未知'}}</text>
+        </view>
+        <view class="cat-actions" wx:if="{{tab === 'pending'}}">
+          <view class="btn approve" catchtap="approve" data-id="{{item._id}}">
+            <text>✓ 批准</text>
+          </view>
+          <view class="btn reject" catchtap="reject" data-id="{{item._id}}">
+            <text>✕ 拒绝</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty" wx:if="{{!loading && cats.length === 0}}">
+      <text class="empty-icon">🎉</text>
+      <text class="empty-text">{{tab === 'pending' ? '暂无待审核' : '暂无记录'}}</text>
+    </view>
+
+    <!-- 加载中 -->
+    <view class="loading" wx:if="{{loading}}">
+      <text class="loading-text">加载中...</text>
+    </view>
+  </view>
+</view>

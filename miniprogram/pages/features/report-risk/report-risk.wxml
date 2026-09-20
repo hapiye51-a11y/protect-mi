@@ -1,0 +1,148 @@
+<view class="container">
+  <!-- 返回按钮 -->
+  <view class="back-button" bindtap="goBack">
+    <text class="back-icon">◀</text>
+  </view>
+
+  <!-- 顶部提示卡片 -->
+  <view class="tip-card">
+    <text class="tip-icon">⚠️</text>
+    <view class="tip-content">
+      <text class="tip-title">感谢您的反馈！</text>
+      <text class="tip-desc">您的上报将帮助更多人和猫咪避开危险区域</text>
+    </view>
+  </view>
+
+  <!-- 表单区域 -->
+  <view class="form-section">
+    <!-- 照片上传 -->
+    <view class="form-item">
+      <view class="item-label">
+        <text class="label-text">现场照片</text>
+        <text class="label-required">*</text>
+      </view>
+      <view class="photo-upload">
+        <view class="photo-item" wx:for="{{photos}}" wx:key="index">
+          <image class="photo-preview" src="{{item}}" mode="aspectFill" bindtap="previewPhoto" data-index="{{index}}" />
+          <view class="photo-delete" bindtap="deletePhoto" data-index="{{index}}">
+            <text class="delete-icon">×</text>
+          </view>
+        </view>
+        <view class="photo-add" wx:if="{{photos.length < 3}}" bindtap="choosePhoto">
+          <text class="add-icon">📷</text>
+          <text class="add-text">添加照片</text>
+          <text class="add-hint">{{photos.length}}/3</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 风险等级 -->
+    <view class="form-item">
+      <view class="item-label">
+        <text class="label-text">风险等级</text>
+        <text class="label-required">*</text>
+      </view>
+      <view class="risk-level-group">
+        <view
+          class="level-btn {{riskLevel === 'high' ? 'active high' : ''}}"
+          bindtap="selectRiskLevel"
+          data-level="high">
+          <text class="level-emoji">🔴</text>
+          <text class="level-text">高危</text>
+        </view>
+        <view
+          class="level-btn {{riskLevel === 'medium' ? 'active medium' : ''}}"
+          bindtap="selectRiskLevel"
+          data-level="medium">
+          <text class="level-emoji">🟠</text>
+          <text class="level-text">中危</text>
+        </view>
+        <view
+          class="level-btn {{riskLevel === 'low' ? 'active low' : ''}}"
+          bindtap="selectRiskLevel"
+          data-level="low">
+          <text class="level-emoji">🟡</text>
+          <text class="level-text">低危</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 风险类型 -->
+    <view class="form-item">
+      <view class="item-label">
+        <text class="label-text">风险类型</text>
+        <text class="label-required">*</text>
+      </view>
+      <view class="risk-type-group">
+        <view
+          class="type-tag {{riskType === item.value ? 'active' : ''}}"
+          wx:for="{{riskTypes}}"
+          wx:key="value"
+          bindtap="selectRiskType"
+          data-type="{{item.value}}">
+          <text class="type-icon">{{item.icon}}</text>
+          <text class="type-text">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 位置信息 -->
+    <view class="form-item">
+      <view class="item-label">
+        <text class="label-text">位置信息</text>
+        <text class="label-required">*</text>
+      </view>
+      <view class="location-card" bindtap="selectLocation">
+        <view class="location-icon">📍</view>
+        <view class="location-info">
+          <text class="location-address">{{address || '点击选择位置'}}</text>
+          <text class="location-detail" wx:if="{{latitude && longitude}}">
+            经度：{{longitude}} | 纬度：{{latitude}}
+          </text>
+        </view>
+        <text class="location-arrow">›</text>
+      </view>
+    </view>
+
+    <!-- 详细描述 -->
+    <view class="form-item">
+      <view class="item-label">
+        <text class="label-text">详细描述</text>
+        <text class="label-required">*</text>
+      </view>
+      <textarea
+        class="textarea-input"
+        placeholder="请详细描述风险情况，如：发现捕猫笼、有人投毒、路面危险等..."
+        value="{{description}}"
+        bindinput="onDescriptionInput"
+        maxlength="500"
+        show-confirm-bar="{{false}}"
+        auto-height />
+      <view class="textarea-counter">{{description.length}}/500</view>
+    </view>
+
+    <!-- 联系方式（可选） -->
+    <view class="form-item">
+      <view class="item-label">
+        <text class="label-text">联系方式</text>
+        <text class="label-optional">选填</text>
+      </view>
+      <input
+        class="text-input"
+        placeholder="便于我们核实情况（不会公开）"
+        value="{{contact}}"
+        bindinput="onContactInput"
+        maxlength="50" />
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <button class="submit-btn {{canSubmit ? '' : 'disabled'}}" bindtap="onSubmit" disabled="{{!canSubmit}}">
+      <text class="submit-text">提交上报</text>
+    </button>
+    <view class="submit-tip">
+      <text class="tip-text">提交后我们将尽快核实并在地图上标记</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,427 @@
+/* ========== 科学养宠页面 - 清新绿色风格 ========== */
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #E8F5E9 0%, #F5F9F5 10%, #FFFFFF 100%);
+}
+
+/* 页面头部 */
+.page-header {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  padding: 40rpx 30rpx;
+  color: #fff;
+}
+
+.header-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+/* Tab 切换 */
+.section-tabs {
+  display: flex;
+  background: #FFFFFF;
+  padding: 16rpx 24rpx;
+  gap: 12rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.tab-item {
+  flex: 1;
+  padding: 16rpx 0;
+  text-align: center;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #666;
+  border-radius: 20rpx;
+  background: #f5f5f5;
+  transition: all 0.3s ease;
+}
+
+.tab-item.active {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: #FFFFFF;
+}
+
+/* 内容区 */
+.content-area {
+  padding: 20rpx 24rpx;
+  height: calc(100vh - 200rpx);
+}
+
+/* 卡片 */
+.section-card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(76, 175, 80, 0.08);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.title-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+
+.title-text {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+/* 时间线 */
+.timeline {
+  border-left: 4rpx solid #E8F5E9;
+  padding-left: 20rpx;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 16rpx 0;
+  padding-left: 20rpx;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -30rpx;
+  top: 24rpx;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #4CAF50;
+}
+
+.timeline-age {
+  display: block;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #4CAF50;
+  margin-bottom: 4rpx;
+}
+
+.timeline-vaccine {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4rpx;
+}
+
+.timeline-note {
+  display: block;
+  font-size: 24rpx;
+  color: #888;
+}
+
+/* 驱虫列表 */
+.deworm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.deworm-item {
+  background: #F5F9F5;
+  border-radius: 12rpx;
+  padding: 16rpx;
+}
+
+.deworm-type {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.deworm-frequency {
+  font-size: 24rpx;
+  color: #4CAF50;
+  margin-bottom: 4rpx;
+}
+
+.deworm-note {
+  font-size: 22rpx;
+  color: #888;
+}
+
+/* TNR内容 */
+.tnr-content {
+  padding: 0;
+}
+
+.tnr-subtitle {
+  display: block;
+  font-size: 26rpx;
+  color: #4CAF50;
+  margin-bottom: 16rpx;
+  text-align: center;
+}
+
+.benefit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 12rpx;
+  background: #F5F9F5;
+  border-radius: 12rpx;
+}
+
+.benefit-icon {
+  font-size: 28rpx;
+  margin-right: 12rpx;
+}
+
+.benefit-text {
+  font-size: 26rpx;
+  color: #333;
+  flex: 1;
+}
+
+.tnr-highlight {
+  margin-top: 16rpx;
+  padding: 16rpx;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  border-radius: 12rpx;
+  text-align: center;
+}
+
+.highlight-text {
+  font-size: 26rpx;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* 应急列表 */
+.emergency-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.emergency-card {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.emergency-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.emergency-icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+.emergency-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.emergency-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.urgency-badge {
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+}
+
+.urgency-badge.level-high {
+  background: rgba(244, 67, 54, 0.1);
+  color: #F44336;
+}
+
+.urgency-badge.level-medium {
+  background: rgba(255, 152, 0, 0.1);
+  color: #FF9800;
+}
+
+.emergency-summary {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 封窗部分 */
+.window-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.danger-alert {
+  display: flex;
+  align-items: center;
+  background: rgba(244, 67, 54, 0.08);
+  border-radius: 16rpx;
+  padding: 20rpx;
+  border-left: 6rpx solid #F44336;
+}
+
+.alert-icon {
+  font-size: 40rpx;
+  margin-right: 16rpx;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #F44336;
+  margin-bottom: 4rpx;
+}
+
+.alert-subtitle {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 数据网格 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+}
+
+.stat-item {
+  background: #F5F9F5;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #4CAF50;
+  margin-bottom: 4rpx;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #666;
+}
+
+/* 封窗标准 */
+.window-standards {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.standard-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.standard-number {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: #4CAF50;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 600;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+}
+
+.standard-content {
+  flex: 1;
+}
+
+.standard-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4rpx;
+}
+
+.standard-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 误区列表 */
+.myth-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.myth-item {
+  background: #f9f9f9;
+  border-radius: 12rpx;
+  padding: 16rpx;
+}
+
+.myth-wrong {
+  display: block;
+  font-size: 24rpx;
+  color: #F44336;
+  margin-bottom: 8rpx;
+}
+
+.myth-right {
+  font-size: 24rpx;
+  color: #4CAF50;
+}
+
+/* 行动卡片 */
+.action-card {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  border-radius: 16rpx;
+  padding: 28rpx 32rpx;
+  margin: 20rpx 0;
+  color: #fff;
+}
+
+.action-card .action-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 6rpx;
+}
+
+.action-card .action-desc {
+  display: block;
+  font-size: 24rpx;
+  opacity: 0.85;
+}

@@ -1,0 +1,13 @@
+<view class="custom-tabbar">
+  <view class="tabbar-item {{currentPath === item.pagePath ? 'active' : ''}}"
+        wx:for="{{list}}"
+        wx:key="pagePath"
+        data-path="{{item.pagePath}}"
+        data-center="{{item.isCenter}}"
+        bindtap="switchTab">
+    <view class="tabbar-icon-wrap {{item.isCenter ? 'center' : ''}}">
+      <text class="tabbar-icon">{{item.icon}}</text>
+    </view>
+    <text class="tabbar-text">{{item.text}}</text>
+  </view>
+</view>

@@ -1,0 +1,80 @@
+<view class="page">
+  <!-- 头部 -->
+  <view class="header">
+    <text class="title">🛡️ 守护盾牌</text>
+    <text class="subtitle">用法律武器保护每一只猫咪</text>
+  </view>
+
+  <!-- 快捷操作（放最前面） -->
+  <view class="quick-actions">
+    <view class="action-item emergency" bindtap="emergencyHelp">
+      <text class="action-icon">🆘</text>
+      <text class="action-label">紧急求助</text>
+    </view>
+    <view class="action-item" bindtap="findHospital">
+      <text class="action-icon">🏥</text>
+      <text class="action-label">附近医院</text>
+    </view>
+    <view class="action-item" bindtap="submitReport">
+      <text class="action-icon">📝</text>
+      <text class="action-label">提交举报</text>
+    </view>
+    <view class="action-item" bindtap="viewCaseStudy">
+      <text class="action-icon">📚</text>
+      <text class="action-label">成功案例</text>
+    </view>
+  </view>
+
+  <!-- 紧急联系 -->
+  <view class="section">
+    <text class="section-title">📞 紧急联系</text>
+    <view class="contact-list">
+      <view class="contact-item" wx:for="{{contacts}}" wx:key="name" bindtap="makeCall" data-phone="{{item.phone}}">
+        <view class="contact-left">
+          <text class="contact-icon">{{item.icon}}</text>
+          <view class="contact-info">
+            <text class="contact-name">{{item.name}}</text>
+            <text class="contact-desc">{{item.description}}</text>
+          </view>
+        </view>
+        <view class="call-btn">
+          <text>拨打</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 报警话术 -->
+  <view class="section">
+    <text class="section-title">📞 报警话术</text>
+    <view class="template-box">
+      <text class="template-text">{{policeTemplate}}</text>
+      <view class="copy-btn" bindtap="copyTemplate">
+        <text>复制话术</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 取证步骤 -->
+  <view class="section">
+    <text class="section-title">📸 取证指南</text>
+    <view class="steps">
+      <view class="step" wx:for="{{evidenceSteps}}" wx:key="id">
+        <view class="step-num">{{item.id}}</view>
+        <view class="step-content">
+          <text class="step-title">{{item.title}}</text>
+          <text class="step-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 警告 -->
+  <view class="warning-box">
+    <text class="warning-icon">⚠️</text>
+    <view class="warning-content">
+      <text class="warning-title">遇到虐猫行为，请立即报警</text>
+      <text class="warning-desc">虐待动物已纳入《治安管理处罚法》</text>
+    </view>
+  </view>
+</view>

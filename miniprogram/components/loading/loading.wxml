@@ -1,0 +1,10 @@
+<view class="loading-container" wx:if="{{show}}">
+  <view class="loading-content">
+    <view class="paw-container">
+      <view class="paw paw-1">🐾</view>
+      <view class="paw paw-2">🐾</view>
+      <view class="paw paw-3">🐾</view>
+    </view>
+    <text class="loading-text">{{text}}</text>
+  </view>
+</view>

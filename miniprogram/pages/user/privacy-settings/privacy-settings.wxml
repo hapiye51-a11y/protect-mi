@@ -1,0 +1,76 @@
+<view class="page">
+  <!-- 隐私控制 -->
+  <view class="section">
+    <text class="section-title">隐私控制</text>
+    <view class="list">
+      <view class="item">
+        <view class="left">
+          <text class="label">显示位置信息</text>
+          <text class="desc">在发布内容时显示你的位置</text>
+        </view>
+        <switch checked="{{settings.showLocation}}" bindchange="toggleSwitch" data-key="showLocation" color="#4CAF50" />
+      </view>
+      <view class="item">
+        <view class="left">
+          <text class="label">显示在线状态</text>
+          <text class="desc">让其他用户看到你在线</text>
+        </view>
+        <switch checked="{{settings.showOnlineStatus}}" bindchange="toggleSwitch" data-key="showOnlineStatus" color="#4CAF50" />
+      </view>
+      <view class="item">
+        <view class="left">
+          <text class="label">允许陌生人私信</text>
+          <text class="desc">未关注你的人可以给你发私信</text>
+        </view>
+        <switch checked="{{settings.allowStrangerMsg}}" bindchange="toggleSwitch" data-key="allowStrangerMsg" color="#4CAF50" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 内容可见性 -->
+  <view class="section">
+    <text class="section-title">内容可见性</text>
+    <view class="list">
+      <view class="item">
+        <view class="left">
+          <text class="label">公开我的猫咪</text>
+          <text class="desc">其他用户可以看到你关注的猫咪</text>
+        </view>
+        <switch checked="{{settings.showMyCats}}" bindchange="toggleSwitch" data-key="showMyCats" color="#4CAF50" />
+      </view>
+      <view class="item">
+        <view class="left">
+          <text class="label">公开我的动态</text>
+          <text class="desc">其他用户可以看到你发布的动态</text>
+        </view>
+        <switch checked="{{settings.showMyMoments}}" bindchange="toggleSwitch" data-key="showMyMoments" color="#4CAF50" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 法律条款 -->
+  <view class="section">
+    <text class="section-title">法律条款</text>
+    <view class="list">
+      <view class="item clickable" bindtap="viewPrivacy">
+        <text class="label">隐私政策</text>
+        <text class="arrow">›</text>
+      </view>
+      <view class="item clickable" bindtap="viewAgreement">
+        <text class="label">用户协议</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据管理 -->
+  <view class="section">
+    <text class="section-title">数据管理</text>
+    <view class="list">
+      <view class="item clickable" bindtap="clearCache">
+        <text class="label">清除缓存</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+  </view>
+</view>

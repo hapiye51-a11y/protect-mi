@@ -1,0 +1,113 @@
+<view class="container">
+  <!-- 类型提示 -->
+  <view class="type-banner {{type === 'lost' ? 'lost' : 'found'}}">
+    <text class="type-icon">{{type === 'lost' ? '🔍' : '😺'}}</text>
+    <text class="type-text">{{type === 'lost' ? '发布走失信息' : '发布捡到信息'}}</text>
+  </view>
+
+  <!-- 表单 -->
+  <view class="form-section">
+    <!-- 照片上传 -->
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-text">猫咪照片</text>
+        <text class="label-required">*</text>
+        <text class="label-tip">最多9张</text>
+      </view>
+      <view class="photo-grid">
+        <block wx:for="{{photos}}" wx:key="index">
+          <view class="photo-item">
+            <image class="photo-preview" src="{{item}}" mode="aspectFill" bindtap="previewPhoto" data-url="{{item}}" />
+            <view class="photo-delete" bindtap="deletePhoto" data-index="{{index}}">×</view>
+          </view>
+        </block>
+        <view class="photo-add" wx:if="{{photos.length < 9}}" bindtap="choosePhoto">
+          <text class="add-icon">+</text>
+          <text class="add-text">添加照片</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 猫咪名称 -->
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-text">猫咪名称</text>
+        <text class="label-required">*</text>
+      </view>
+      <input class="form-input" placeholder="给猫咪起个名字或描述（如：橘猫、三花）" value="{{catName}}" bindinput="onCatNameInput" />
+    </view>
+
+    <!-- 猫咪特征 -->
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-text">特征描述</text>
+        <text class="label-required">*</text>
+      </view>
+      <textarea class="form-textarea" placeholder="请详细描述猫咪特征：&#10;- 毛色、花纹&#10;- 体型大小&#10;- 特殊标记（如：耳缺、断尾）&#10;- 性格特点&#10;- 是否戴项圈等" value="{{features}}" bindinput="onFeaturesInput" maxlength="500" />
+      <text class="char-count">{{features.length}}/500</text>
+    </view>
+
+    <!-- 时间 -->
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-text">{{type === 'lost' ? '走失时间' : '捡到时间'}}</text>
+        <text class="label-required">*</text>
+      </view>
+      <picker mode="date" value="{{eventDate}}" start="2020-01-01" end="{{today}}" bindchange="onDateChange">
+        <view class="form-picker">
+          <text class="picker-value">{{eventDate || '请选择日期'}}</text>
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 地点 -->
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-text">{{type === 'lost' ? '走失地点' : '捡到地点'}}</text>
+        <text class="label-required">*</text>
+      </view>
+      <view class="form-picker" bindtap="chooseLocation">
+        <text class="picker-value {{location ? '' : 'placeholder'}}">{{location ? location.name : '点击选择地点'}}</text>
+        <text class="picker-arrow">›</text>
+      </view>
+      <text class="location-address" wx:if="{{location && location.address}}">{{location.address}}</text>
+    </view>
+
+    <!-- 联系方式 -->
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-text">联系方式</text>
+        <text class="label-required">*</text>
+      </view>
+      <input class="form-input" placeholder="手机号或微信号（仅匹配成功后可见）" value="{{contact}}" bindinput="onContactInput" />
+    </view>
+
+    <!-- 悬赏金额（仅走失） -->
+    <view class="form-item" wx:if="{{type === 'lost'}}">
+      <view class="form-label">
+        <text class="label-text">悬赏金额</text>
+        <text class="label-tip">选填</text>
+      </view>
+      <input class="form-input" type="number" placeholder="找到猫咪的感谢金（元）" value="{{reward}}" bindinput="onRewardInput" />
+    </view>
+
+    <!-- 备注 -->
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-text">补充说明</text>
+        <text class="label-tip">选填</text>
+      </view>
+      <textarea class="form-textarea" placeholder="其他需要说明的信息" value="{{notes}}" bindinput="onNotesInput" maxlength="200" />
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <button class="submit-btn {{canSubmit ? '' : 'disabled'}}" bindtap="submit" disabled="{{loading}}">
+      <text wx:if="{{loading}}">发布中...</text>
+      <text wx:else>发布信息</text>
+    </button>
+    <text class="submit-tip">发布后将公开展示，请确保信息真实有效</text>
+  </view>
+</view>

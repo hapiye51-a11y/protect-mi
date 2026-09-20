@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "守护盾牌",
+  "navigationBarBackgroundColor": "#4CAF50",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#F5F9F5",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}

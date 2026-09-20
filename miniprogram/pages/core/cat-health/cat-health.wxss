@@ -1,0 +1,304 @@
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 健康概览 */
+.health-overview {
+  background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+  padding: 40rpx 30rpx 50rpx;
+  color: #fff;
+}
+
+.overview-header {
+  margin-bottom: 30rpx;
+}
+
+.cat-name {
+  display: block;
+  font-size: 24rpx;
+  opacity: 0.8;
+  margin-bottom: 8rpx;
+}
+
+.overview-title {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.health-stats {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20rpx;
+  padding: 30rpx 0;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-size: 44rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+/* 筛选标签 */
+.filter-tabs {
+  display: flex;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  gap: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.filter-tab {
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #f5f5f5;
+}
+
+.filter-tab.active {
+  background: #FF9800;
+  color: #fff;
+}
+
+/* 时间线 */
+.timeline-container {
+  padding: 30rpx;
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 30rpx;
+}
+
+.timeline-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20rpx;
+}
+
+.timeline-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  flex-shrink: 0;
+}
+
+.icon-vaccine {
+  background: #E3F2FD;
+  color: #2196F3;
+}
+
+.icon-deworm {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.icon-treatment {
+  background: #FFF3E0;
+  color: #FF9800;
+}
+
+.timeline-line {
+  width: 4rpx;
+  flex: 1;
+  background: #e0e0e0;
+  margin-top: 10rpx;
+}
+
+.timeline-item:last-child .timeline-line {
+  display: none;
+}
+
+.timeline-content {
+  flex: 1;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.06);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.timeline-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.timeline-date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 记录详情 */
+.record-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.detail-label {
+  font-size: 26rpx;
+  color: #999;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  font-size: 26rpx;
+  color: #333;
+  text-align: right;
+  max-width: 400rpx;
+}
+
+.detail-value.next {
+  color: #FF9800;
+  font-weight: 500;
+}
+
+/* 备注 */
+.record-note {
+  margin-top: 16rpx;
+  padding: 16rpx;
+  background: #f9f9f9;
+  border-radius: 12rpx;
+}
+
+.note-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.note-text {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 图片 */
+.record-images {
+  display: flex;
+  gap: 12rpx;
+  margin-top: 16rpx;
+  flex-wrap: wrap;
+}
+
+.record-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 添加按钮 */
+.fab-button {
+  position: fixed;
+  right: 40rpx;
+  bottom: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: #FF9800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(255,152,0,0.4);
+}
+
+.fab-icon {
+  font-size: 48rpx;
+  color: #fff;
+  font-weight: 300;
+}
+
+/* 添加菜单 */
+.add-menu-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.add-menu {
+  width: 100%;
+  background: #fff;
+  border-radius: 30rpx 30rpx 0 0;
+  padding: 40rpx 30rpx;
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.menu-text {
+  font-size: 32rpx;
+  color: #333;
+}
+
+.bottom-space {
+  height: 200rpx;
+}

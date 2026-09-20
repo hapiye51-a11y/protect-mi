@@ -1,0 +1,141 @@
+/* 个人中心 */
+.page {
+  min-height: 100vh;
+  background: #F5F9F5;
+  padding-bottom: 140rpx;
+}
+
+/* 顶部用户区 */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 40rpx 32rpx;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+}
+
+.avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar image {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar text {
+  font-size: 48rpx;
+}
+
+.info {
+  flex: 1;
+  margin-left: 24rpx;
+  min-width: 0;
+}
+
+.name {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.level {
+  display: inline-block;
+  margin-top: 8rpx;
+  padding: 4rpx 16rpx;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 16rpx;
+  font-size: 22rpx;
+  color: #FFFFFF;
+}
+
+.edit {
+  padding: 12rpx 28rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 24rpx;
+}
+
+.edit text {
+  font-size: 26rpx;
+  color: #FFFFFF;
+}
+
+/* 区块 */
+.section {
+  margin: 20rpx 24rpx;
+}
+
+.title {
+  display: block;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 12rpx;
+  padding-left: 8rpx;
+}
+
+.list {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.icon {
+  font-size: 36rpx;
+  margin-right: 16rpx;
+}
+
+.txt {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.arrow {
+  font-size: 28rpx;
+  color: #CCC;
+}
+
+.item.logout .txt {
+  color: #FF5252;
+}
+
+/* 底部 */
+.footer {
+  text-align: center;
+  padding: 48rpx 24rpx 24rpx;
+}
+
+.footer text {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.footer .ver {
+  font-size: 22rpx;
+  color: #BBB;
+  margin-top: 8rpx;
+}

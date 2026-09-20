@@ -1,0 +1,214 @@
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+/* 日记头部 */
+.diary-header {
+  background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
+  padding: 40rpx 30rpx;
+  color: #fff;
+}
+
+.header-info {
+  margin-bottom: 20rpx;
+}
+
+.cat-name {
+  display: block;
+  font-size: 24rpx;
+  opacity: 0.8;
+  margin-bottom: 8rpx;
+}
+
+.diary-title {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.diary-stats {
+  margin-top: 16rpx;
+}
+
+.stat-item {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+/* 日志列表 */
+.diary-list {
+  padding: 20rpx;
+}
+
+.diary-item {
+  display: flex;
+  margin-bottom: 30rpx;
+}
+
+/* 日期标签 */
+.date-label {
+  width: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20rpx;
+  flex-shrink: 0;
+}
+
+.date-day {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #00BCD4;
+  line-height: 1;
+}
+
+.date-month {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+/* 日志内容 */
+.diary-content {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.diary-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.06);
+}
+
+.diary-title-text {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.diary-text {
+  display: block;
+  font-size: 28rpx;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 16rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 日志图片 */
+.diary-images {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.diary-image {
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+}
+
+/* 标签 */
+.diary-tags {
+  display: flex;
+  gap: 12rpx;
+  flex-wrap: wrap;
+  margin-bottom: 16rpx;
+}
+
+.diary-tag {
+  padding: 6rpx 16rpx;
+  background: #E0F7FA;
+  color: #00838F;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+/* 互动 */
+.diary-footer {
+  display: flex;
+  gap: 30rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.footer-stat {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.stat-icon {
+  font-size: 24rpx;
+}
+
+.stat-num {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 12rpx;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  color: #ccc;
+  margin-bottom: 30rpx;
+}
+
+.add-diary-btn {
+  background: #00BCD4;
+  color: #fff;
+  font-size: 28rpx;
+  padding: 20rpx 60rpx;
+  border-radius: 40rpx;
+  border: none;
+}
+
+/* FAB按钮 */
+.fab-button {
+  position: fixed;
+  right: 40rpx;
+  bottom: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: #00BCD4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(0,188,212,0.4);
+}
+
+.fab-icon {
+  font-size: 48rpx;
+  color: #fff;
+  font-weight: 300;
+}
+
+.bottom-space {
+  height: 200rpx;
+}

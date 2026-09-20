@@ -1,0 +1,120 @@
+<view class="container">
+  <view class="header">
+    <text class="title">用户协议</text>
+    <text class="update-time">更新日期：2026年3月21日</text>
+    <text class="effective-time">生效日期：2026年3月21日</text>
+  </view>
+
+  <view class="content">
+    <view class="section">
+      <text class="section-title">引言</text>
+      <text class="section-text">欢迎您使用守护咪小程序！为使用守护咪服务（以下简称"本服务"），您应当阅读并遵守《守护咪用户协议》（以下简称"本协议"）。请您务必审慎阅读、充分理解各条款内容，特别是免除或限制责任的相应条款。</text>
+      <text class="section-text">如您不同意本协议的任何条款，请您立即停止使用本服务。您使用本服务即视为您已阅读并同意本协议的约束。</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">一、服务内容</text>
+      <text class="section-text">守护咪是一款流浪猫救助公益小程序，主要提供以下服务：</text>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">流浪猫信息展示与档案管理</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">猫咪匹配（走失/捡到信息发布）</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">TNR记录与管理</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">领养申请与审核</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">救助知识科普与社区交流</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">风险区域标注与上报</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-title">二、账号使用规范</text>
+      <text class="section-text">2.1 您理解并承诺，您所设置的账号不得违反国家法律法规及平台规则，您的账号名称、头像和简介等注册信息及其他个人信息中不得出现违法和不良信息。</text>
+      <text class="section-text">2.2 您理解并同意，您对通过该账号进行的所有活动和事件负法律责任。</text>
+      <text class="section-text">2.3 您应当对您的账号进行妥善保管，切勿将账号信息告知他人。因您保管不当可能导致的被盗用等后果由您自行承担。</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">三、用户行为规范</text>
+      <text class="section-text">您在使用本服务时，不得从事以下行为：</text>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">发布虚假、欺诈性信息，包括但不限于虚假领养信息</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">发布涉及虐待、伤害动物的内容</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">发布侵犯他人隐私、肖像权的内容</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">发布违法、淫秽、暴力、恐怖或违反公序良俗的内容</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">利用本服务进行任何商业营销活动（未经授权）</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">干扰或破坏本服务的正常运行</text>
+      </view>
+      <view class="list-item">
+        <text class="list-dot">•</text>
+        <text class="list-text">其他违反法律法规或侵犯他人合法权益的行为</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-title">四、内容规范</text>
+      <text class="section-text">4.1 您发布的内容应符合国家法律法规和社会主义核心价值观，不得含有违法和不良信息。</text>
+      <text class="section-text">4.2 您理解并同意，您发布的内容将公开展示，请勿发布涉及个人隐私的敏感信息。</text>
+      <text class="section-text">4.3 我们有权对您发布的内容进行审核，如发现违规内容，我们有权删除并视情节轻重对您的账号进行相应处理。</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">五、知识产权</text>
+      <text class="section-text">5.1 本服务中包含的所有内容（包括但不限于文字、图片、音频、视频、软件、界面设计等）的知识产权归我们或相关权利人所有。</text>
+      <text class="section-text">5.2 您发布的内容，您保证拥有合法权利，不侵犯他人的知识产权。您授予我们一项全球性、免费的许可，以使用、复制、展示您发布的内容（仅用于本服务相关用途）。</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">六、免责声明</text>
+      <text class="section-text">6.1 本服务仅提供信息展示和交流平台，不对用户发布的信息的真实性、准确性、完整性负责。</text>
+      <text class="section-text">6.2 领养行为需您自行判断和核实，因领养产生的纠纷由相关当事人自行解决。</text>
+      <text class="section-text">6.3 因不可抗力、网络故障、系统维护等原因导致的服务中断或损失，我们不承担责任。</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">七、协议修改</text>
+      <text class="section-text">我们有权根据需要修改本协议，修改后的协议将在小程序内公示。如您不同意修改后的协议，您有权停止使用本服务。如您继续使用，即表示您接受修改后的协议。</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">八、联系我们</text>
+      <text class="section-text">如您对本协议有任何疑问，可通过以下方式联系我们：</text>
+      <view class="contact-info">
+        <text class="contact-item">📧 邮箱：a229941302@163.com</text>
+        <text class="contact-item">💬 微信：shouhumi2024</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>

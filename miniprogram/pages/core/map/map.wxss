@@ -1,0 +1,409 @@
+/* ========== 守护地图页面 - 清新绿色风格 ========== */
+
+.container {
+  min-height: 100vh;
+  background: #F5F9F5;
+  padding-bottom: 120rpx;
+}
+
+/* 地图容器 */
+.full-map {
+  width: 100%;
+  height: calc(100vh - 120rpx);
+}
+
+/* 顶部标题 */
+.top-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 24rpx 24rpx 16rpx;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%);
+}
+
+.header-content {
+  display: flex;
+  align-items: baseline;
+  gap: 12rpx;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #4CAF50;
+}
+
+.header-stats {
+  font-size: 24rpx;
+  color: #888;
+}
+
+/* 右侧快捷按钮 */
+.quick-actions {
+  position: absolute;
+  right: 24rpx;
+  bottom: 320rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.quick-actions .action-btn {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick-actions .action-icon {
+  font-size: 36rpx;
+}
+
+.quick-actions .action-label {
+  font-size: 20rpx;
+  color: #888;
+  margin-top: 2rpx;
+}
+
+.report-btn {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%) !important;
+  box-shadow: 0 6rpx 24rpx rgba(76, 175, 80, 0.4) !important;
+}
+
+.report-btn .action-icon {
+  font-size: 40rpx;
+}
+
+.report-btn .action-label {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* 底部菜单 */
+.bottom-menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 120rpx;
+  background: #FFFFFF;
+  border-radius: 32rpx 32rpx 0 0;
+  box-shadow: 0 -4rpx 20rpx rgba(76, 175, 80, 0.15);
+  z-index: 100;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.menu-indicator {
+  padding: 16rpx 0;
+  text-align: center;
+}
+
+.indicator-bar {
+  width: 80rpx;
+  height: 8rpx;
+  background: #E8F5E9;
+  border-radius: 4rpx;
+  margin: 0 auto;
+}
+
+/* 预览模式 */
+.menu-preview {
+  display: flex;
+  padding: 16rpx 24rpx 24rpx;
+  gap: 16rpx;
+}
+
+.preview-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.preview-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+}
+
+.preview-text {
+  font-size: 22rpx;
+  color: #666;
+}
+
+.more-icon {
+  background: #F5F9F5 !important;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #999;
+}
+
+/* 完整菜单 */
+.menu-grid-full {
+  padding: 0 24rpx 24rpx;
+}
+
+.menu-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 16rpx 0;
+  margin-bottom: 8rpx;
+}
+
+.section-icon {
+  font-size: 28rpx;
+}
+
+.section-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 12rpx;
+  background: #F5F9F5;
+  border-radius: 20rpx;
+  transition: all 0.3s ease;
+}
+
+.menu-item-hover {
+  background: #E8F5E9;
+  transform: scale(0.96);
+}
+
+.item-icon-wrapper {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8rpx;
+}
+
+.item-icon {
+  font-size: 32rpx;
+}
+
+.item-title {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 4rpx;
+}
+
+.item-desc {
+  font-size: 20rpx;
+  color: #888;
+  text-align: center;
+}
+
+/* 详情面板 */
+.detail-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 120rpx;
+  background: #FFFFFF;
+  border-radius: 32rpx 32rpx 0 0;
+  box-shadow: 0 -8rpx 32rpx rgba(0, 0, 0, 0.15);
+  z-index: 200;
+  max-height: 60vh;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.detail-panel.show {
+  transform: translateY(0);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx;
+  border-bottom: 1rpx solid #E8F5E9;
+}
+
+.panel-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.panel-icon {
+  font-size: 32rpx;
+}
+
+.panel-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.panel-close {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-icon {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.panel-content {
+  padding: 24rpx;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.info-section {
+  margin-bottom: 20rpx;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 0;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: #888;
+}
+
+.info-value {
+  font-size: 26rpx;
+  color: #333;
+  text-align: right;
+  flex: 1;
+  margin-left: 16rpx;
+}
+
+/* 徽章 */
+.risk-badge, .status-badge {
+  padding: 6rpx 16rpx;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.risk-high, .status-badge.urgent {
+  background: rgba(244, 67, 54, 0.15);
+  color: #F44336;
+}
+
+.risk-medium {
+  background: rgba(255, 152, 0, 0.15);
+  color: #FF9800;
+}
+
+.risk-low {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
+}
+
+/* 提示框 */
+.warning-box, .tips-box, .urgent-box {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 16rpx;
+  border-radius: 12rpx;
+  margin-top: 16rpx;
+}
+
+.warning-box {
+  background: rgba(244, 67, 54, 0.08);
+}
+
+.tips-box {
+  background: rgba(76, 175, 80, 0.08);
+}
+
+.urgent-box {
+  background: rgba(244, 67, 54, 0.12);
+}
+
+.warning-icon, .tips-icon, .urgent-icon {
+  font-size: 28rpx;
+}
+
+.warning-text, .tips-text, .urgent-text {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 面板按钮 */
+.panel-actions {
+  display: flex;
+  gap: 16rpx;
+  padding: 16rpx 24rpx 32rpx;
+}
+
+.panel-actions .action-btn {
+  flex: 1;
+  padding: 20rpx 0;
+  text-align: center;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.panel-actions .action-btn.primary {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: #FFFFFF;
+}
+
+.panel-actions .action-btn.secondary {
+  background: #F5F9F5;
+  color: #666;
+}
+
+/* 遮罩层 */
+.panel-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 150;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.panel-mask.show {
+  opacity: 1;
+  pointer-events: auto;
+}

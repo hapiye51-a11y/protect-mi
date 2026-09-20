@@ -1,0 +1,227 @@
+/* 管理员审核页面 */
+.container {
+  min-height: 100vh;
+  background: #F5F9F5;
+}
+
+/* 无权限 */
+.no-permission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 200rpx 48rpx;
+}
+
+.no-permission-icon {
+  font-size: 120rpx;
+  margin-bottom: 32rpx;
+}
+
+.no-permission-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.no-permission-hint {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 标签 */
+.tabs {
+  display: flex;
+  background: #FFFFFF;
+  padding: 16rpx 24rpx;
+  gap: 16rpx;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
+  border-radius: 12rpx;
+  background: #F5F5F5;
+  font-size: 28rpx;
+  color: #666;
+  position: relative;
+}
+
+.tab.active {
+  background: #4CAF50;
+  color: #FFFFFF;
+}
+
+.badge {
+  position: absolute;
+  top: -8rpx;
+  right: -8rpx;
+  min-width: 36rpx;
+  height: 36rpx;
+  background: #FF5252;
+  border-radius: 18rpx;
+  font-size: 22rpx;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8rpx;
+}
+
+/* 列表 */
+.list {
+  padding: 20rpx 24rpx;
+}
+
+.cat-card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  gap: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.cat-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cat-image image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder-emoji {
+  font-size: 80rpx;
+}
+
+.cat-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.cat-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.cat-status {
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 12rpx;
+  background: #FFF3E0;
+  color: #FF9800;
+}
+
+.cat-status.available {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.cat-status.rejected {
+  background: #FFEBEE;
+  color: #F44336;
+}
+
+.cat-meta {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.cat-desc {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cat-time, .cat-reporter {
+  font-size: 22rpx;
+  color: #BBB;
+  display: block;
+  margin-top: 4rpx;
+}
+
+/* 操作按钮 */
+.cat-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16rpx;
+}
+
+.btn {
+  padding: 16rpx 24rpx;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.btn.approve {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.btn.reject {
+  background: #FFEBEE;
+  color: #F44336;
+}
+
+/* 空状态 */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 48rpx;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #999;
+}
+
+/* 加载中 */
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 80rpx 0;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #999;
+}

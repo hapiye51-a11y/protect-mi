@@ -1,0 +1,158 @@
+<view class="container">
+  <!-- 顶部大图 -->
+  <view class="hero-section">
+    <image class="hero-image" src="{{cat.avatar}}" mode="aspectFill" />
+    <view class="hero-overlay">
+      <view class="status-badges">
+        <view class="status-badge status-{{cat.status}}">{{cat.statusText}}</view>
+        <view class="gender-badge gender-{{cat.gender}}">{{cat.gender === 'male' ? '♂' : '♀'}}</view>
+        <view class="neutered-badge" wx:if="{{cat.isNeutered}}">已绝育</view>
+      </view>
+    </view>
+    <view class="back-btn" bindtap="onBack">
+      <text class="back-icon">‹</text>
+    </view>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="info-section">
+    <view class="name-row">
+      <text class="cat-name">{{cat.name}}</text>
+      <view class="personality-tags" wx:if="{{cat.personality && cat.personality.length}}">
+        <text class="personality-tag" wx:for="{{cat.personality}}" wx:key="*this">{{item}}</text>
+      </view>
+    </view>
+    
+    <view class="basic-info-grid">
+      <view class="info-item">
+        <text class="info-value">{{cat.breed || '未知'}}</text>
+        <text class="info-label">品种</text>
+      </view>
+      <view class="info-item">
+        <text class="info-value">{{cat.age || '未知'}}</text>
+        <text class="info-label">年龄</text>
+      </view>
+      <view class="info-item">
+        <text class="info-value">{{cat.color || '未知'}}</text>
+        <text class="info-label">毛色</text>
+      </view>
+      <view class="info-item">
+        <text class="info-value">{{cat.weight || '未知'}}</text>
+        <text class="info-label">体重</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick-actions">
+    <view class="action-item" bindtap="goToHealth">
+      <text class="action-icon">🏥</text>
+      <text class="action-text">健康档案</text>
+      <text class="action-count" wx:if="{{healthRecordCount}}">{{healthRecordCount}}</text>
+    </view>
+    <view class="action-item" bindtap="goToAlbum">
+      <text class="action-icon">📷</text>
+      <text class="action-text">相册</text>
+      <text class="action-count" wx:if="{{photoCount}}">{{photoCount}}</text>
+    </view>
+    <view class="action-item" bindtap="goToDiary">
+      <text class="action-icon">📝</text>
+      <text class="action-text">成长记录</text>
+      <text class="action-count" wx:if="{{diaryCount}}">{{diaryCount}}</text>
+    </view>
+  </view>
+
+  <!-- 救助故事 -->
+  <view class="story-section" wx:if="{{cat.rescueStory}}">
+    <view class="section-header">
+      <text class="section-title">📖 救助故事</text>
+    </view>
+    <text class="story-content">{{cat.rescueStory}}</text>
+    <view class="rescue-meta">
+      <text class="rescue-date">救助时间：{{cat.rescueDate}}</text>
+      <text class="rescue-location" wx:if="{{cat.location}}">发现地点：{{cat.location}}</text>
+    </view>
+  </view>
+
+  <!-- 性格描述 -->
+  <view class="description-section" wx:if="{{cat.description}}">
+    <view class="section-header">
+      <text class="section-title">💝 性格特点</text>
+    </view>
+    <text class="description-content">{{cat.description}}</text>
+  </view>
+
+  <!-- 领养要求 -->
+  <view class="adoption-section" wx:if="{{cat.adoptionRequirements && cat.status === 'available'}}">
+    <view class="section-header">
+      <text class="section-title">🏠 领养要求</text>
+    </view>
+    <view class="requirement-list">
+      <view class="requirement-item" wx:for="{{cat.adoptionRequirements}}" wx:key="*this">
+        <text class="requirement-dot">•</text>
+        <text class="requirement-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 健康概况 -->
+  <view class="health-summary" wx:if="{{cat.healthSummary}}">
+    <view class="section-header">
+      <text class="section-title">🏥 健康概况</text>
+      <text class="section-more" bindtap="goToHealth">查看详情 ›</text>
+    </view>
+    <view class="health-grid">
+      <view class="health-item" wx:if="{{cat.vaccineStatus}}">
+        <text class="health-icon">💉</text>
+        <view class="health-info">
+          <text class="health-label">疫苗</text>
+          <text class="health-value">{{cat.vaccineStatus}}</text>
+        </view>
+      </view>
+      <view class="health-item" wx:if="{{cat.dewormStatus}}">
+        <text class="health-icon">🐛</text>
+        <view class="health-info">
+          <text class="health-label">驱虫</text>
+          <text class="health-value">{{cat.dewormStatus}}</text>
+        </view>
+      </view>
+      <view class="health-item" wx:if="{{cat.healthCondition}}">
+        <text class="health-icon">❤️</text>
+        <view class="health-info">
+          <text class="health-label">健康状况</text>
+          <text class="health-value">{{cat.healthCondition}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最新动态 -->
+  <view class="diary-preview" wx:if="{{latestDiary}}">
+    <view class="section-header">
+      <text class="section-title">📰 最新动态</text>
+      <text class="section-more" bindtap="goToDiary">更多 ›</text>
+    </view>
+    <view class="diary-card" bindtap="goToDiary">
+      <image class="diary-image" src="{{latestDiary.images[0]}}" wx:if="{{latestDiary.images.length}}" mode="aspectFill" />
+      <view class="diary-content">
+        <text class="diary-title">{{latestDiary.title}}</text>
+        <text class="diary-text">{{latestDiary.content}}</text>
+        <text class="diary-date">{{latestDiary.displayDate}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar" wx:if="{{cat.status === 'available'}}">
+    <button class="adopt-btn" bindtap="onAdopt">
+      <text class="btn-icon">🏠</text>
+      <text class="btn-text">申请领养</text>
+    </button>
+    <button class="contact-btn" bindtap="onContact">
+      <text class="btn-icon">💬</text>
+      <text class="btn-text">联系我们</text>
+    </button>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>

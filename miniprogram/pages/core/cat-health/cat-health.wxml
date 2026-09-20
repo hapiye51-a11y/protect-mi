@@ -1,0 +1,156 @@
+<view class="container">
+  <!-- 健康概览 -->
+  <view class="health-overview">
+    <view class="overview-header">
+      <text class="cat-name">{{catName}}</text>
+      <text class="overview-title">健康档案</text>
+    </view>
+    <view class="health-stats">
+      <view class="stat-item">
+        <text class="stat-value">{{vaccineCount}}</text>
+        <text class="stat-label">疫苗记录</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{dewormCount}}</text>
+        <text class="stat-label">驱虫记录</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{treatmentCount}}</text>
+        <text class="stat-label">就诊记录</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 时间线筛选 -->
+  <view class="filter-tabs">
+    <view class="filter-tab {{activeFilter === 'all' ? 'active' : ''}}" bindtap="switchFilter" data-type="all">全部</view>
+    <view class="filter-tab {{activeFilter === 'vaccine' ? 'active' : ''}}" bindtap="switchFilter" data-type="vaccine">疫苗</view>
+    <view class="filter-tab {{activeFilter === 'deworm' ? 'active' : ''}}" bindtap="switchFilter" data-type="deworm">驱虫</view>
+    <view class="filter-tab {{activeFilter === 'treatment' ? 'active' : ''}}" bindtap="switchFilter" data-type="treatment">就诊</view>
+  </view>
+
+  <!-- 健康时间线 -->
+  <view class="timeline-container">
+    <view class="timeline-item" wx:for="{{records}}" wx:key="_id">
+      <view class="timeline-left">
+        <view class="timeline-icon icon-{{item.type}}">
+          <text>{{item.typeIcon}}</text>
+        </view>
+        <view class="timeline-line"></view>
+      </view>
+      <view class="timeline-content">
+        <view class="timeline-header">
+          <text class="timeline-title">{{item.title}}</text>
+          <text class="timeline-date">{{item.displayDate}}</text>
+        </view>
+        
+        <!-- 疫苗记录详情 -->
+        <view class="record-detail" wx:if="{{item.type === 'vaccine'}}">
+          <view class="detail-row">
+            <text class="detail-label">疫苗类型</text>
+            <text class="detail-value">{{item.vaccineType}}</text>
+          </view>
+          <view class="detail-row" wx:if="{{item.vaccineName}}">
+            <text class="detail-label">疫苗名称</text>
+            <text class="detail-value">{{item.vaccineName}}</text>
+          </view>
+          <view class="detail-row" wx:if="{{item.hospital}}">
+            <text class="detail-label">接种医院</text>
+            <text class="detail-value">{{item.hospital}}</text>
+          </view>
+          <view class="detail-row" wx:if="{{item.nextDate}}">
+            <text class="detail-label">下次接种</text>
+            <text class="detail-value next">{{item.nextDate}}</text>
+          </view>
+        </view>
+
+        <!-- 驱虫记录详情 -->
+        <view class="record-detail" wx:if="{{item.type === 'deworm'}}">
+          <view class="detail-row">
+            <text class="detail-label">驱虫类型</text>
+            <text class="detail-value">{{item.dewormType}}</text>
+          </view>
+          <view class="detail-row" wx:if="{{item.brand}}">
+            <text class="detail-label">药品品牌</text>
+            <text class="detail-value">{{item.brand}}</text>
+          </view>
+          <view class="detail-row" wx:if="{{item.nextDate}}">
+            <text class="detail-label">下次驱虫</text>
+            <text class="detail-value next">{{item.nextDate}}</text>
+          </view>
+        </view>
+
+        <!-- 就诊记录详情 -->
+        <view class="record-detail" wx:if="{{item.type === 'treatment'}}">
+          <view class="detail-row">
+            <text class="detail-label">就诊医院</text>
+            <text class="detail-value">{{item.hospital}}</text>
+          </view>
+          <view class="detail-row">
+            <text class="detail-label">诊断结果</text>
+            <text class="detail-value">{{item.diagnosis}}</text>
+          </view>
+          <view class="detail-row" wx:if="{{item.treatment}}">
+            <text class="detail-label">治疗方案</text>
+            <text class="detail-value">{{item.treatment}}</text>
+          </view>
+          <view class="detail-row" wx:if="{{item.cost}}">
+            <text class="detail-label">费用</text>
+            <text class="detail-value">¥{{item.cost}}</text>
+          </view>
+        </view>
+
+        <!-- 备注 -->
+        <view class="record-note" wx:if="{{item.note}}">
+          <text class="note-label">备注：</text>
+          <text class="note-text">{{item.note}}</text>
+        </view>
+
+        <!-- 附件图片 -->
+        <view class="record-images" wx:if="{{item.images && item.images.length}}">
+          <image 
+            class="record-image" 
+            wx:for="{{item.images}}" 
+            wx:for-item="img" 
+            wx:key="*this"
+            src="{{img}}" 
+            mode="aspectFill"
+            bindtap="previewImage"
+            data-url="{{img}}"
+            data-urls="{{item.images}}" />
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{records.length === 0}}">
+      <text class="empty-icon">🏥</text>
+      <text class="empty-text">暂无健康记录</text>
+    </view>
+  </view>
+
+  <!-- 添加记录按钮 -->
+  <view class="fab-button" bindtap="showAddMenu">
+    <text class="fab-icon">+</text>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>
+
+<!-- 添加记录菜单 -->
+<view class="add-menu-mask" wx:if="{{showAddMenu}}" bindtap="hideAddMenu">
+  <view class="add-menu" catchtap="">
+    <view class="menu-item" bindtap="addRecord" data-type="vaccine">
+      <text class="menu-icon">💉</text>
+      <text class="menu-text">添加疫苗记录</text>
+    </view>
+    <view class="menu-item" bindtap="addRecord" data-type="deworm">
+      <text class="menu-icon">🐛</text>
+      <text class="menu-text">添加驱虫记录</text>
+    </view>
+    <view class="menu-item" bindtap="addRecord" data-type="treatment">
+      <text class="menu-icon">🏥</text>
+      <text class="menu-text">添加就诊记录</text>
+    </view>
+  </view>
+</view>

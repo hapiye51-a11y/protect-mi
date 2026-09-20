@@ -1,0 +1,169 @@
+<view class="container">
+  <!-- 表单区域 -->
+  <view class="form-section">
+    <!-- 基本信息 -->
+    <view class="form-group">
+      <text class="group-title">基本信息</text>
+      
+      <view class="form-item">
+        <text class="item-label">猫咪名字</text>
+        <input 
+          class="item-input" 
+          placeholder="请输入猫咪名字" 
+          value="{{cat.name}}"
+          data-field="name"
+          bindinput="onInputChange" />
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">年龄</text>
+        <input 
+          class="item-input" 
+          placeholder="例如：2岁" 
+          value="{{cat.age}}"
+          data-field="age"
+          bindinput="onInputChange" />
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">品种</text>
+        <input 
+          class="item-input" 
+          placeholder="例如：橘猫、英短等" 
+          value="{{cat.breed}}"
+          data-field="breed"
+          bindinput="onInputChange" />
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">性别</text>
+        <picker 
+          mode="selector" 
+          range="{{genderOptions}}" 
+          value="{{genderIndex}}"
+          bindchange="onGenderChange">
+          <view class="item-picker">
+            <text class="picker-text">{{genderOptions[genderIndex]}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">毛色</text>
+        <input 
+          class="item-input" 
+          placeholder="例如：橘色、黑白等" 
+          value="{{cat.color}}"
+          data-field="color"
+          bindinput="onInputChange" />
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">体重</text>
+        <input 
+          class="item-input" 
+          placeholder="例如：3.5kg" 
+          value="{{cat.weight}}"
+          data-field="weight"
+          bindinput="onInputChange" />
+      </view>
+    </view>
+
+    <!-- 健康状态 -->
+    <view class="form-group">
+      <text class="group-title">健康状态</text>
+      
+      <view class="form-item">
+        <text class="item-label">健康状况</text>
+        <picker 
+          mode="selector" 
+          range="{{healthOptions}}" 
+          value="{{healthIndex}}"
+          bindchange="onHealthChange">
+          <view class="item-picker">
+            <text class="picker-text">{{healthOptions[healthIndex]}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">领养状态</text>
+        <picker 
+          mode="selector" 
+          range="{{statusOptions}}" 
+          value="{{statusIndex}}"
+          bindchange="onStatusChange">
+          <view class="item-picker">
+            <text class="picker-text">{{statusOptions[statusIndex]}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 详细描述 -->
+    <view class="form-group">
+      <text class="group-title">详细描述</text>
+      
+      <view class="form-item full">
+        <textarea 
+          class="item-textarea" 
+          placeholder="请描述猫咪的性格、习惯、救助经过等..." 
+          value="{{cat.description}}"
+          data-field="description"
+          bindinput="onInputChange"
+          maxlength="500" />
+      </view>
+    </view>
+
+    <!-- 图片上传 -->
+    <view class="form-group">
+      <text class="group-title">猫咪照片</text>
+      
+      <view class="image-grid">
+        <view 
+          class="image-item" 
+          wx:for="{{cat.images}}" 
+          wx:key="*this">
+          <image class="preview-image" src="{{item}}" mode="aspectFill" />
+          <view class="delete-btn" catchtap="onDeleteImage" data-index="{{index}}">
+            <text class="delete-icon">×</text>
+          </view>
+        </view>
+        
+        <view class="image-item add-btn" bindtap="onChooseImage" wx:if="{{cat.images.length < 9}}">
+          <text class="add-icon">+</text>
+          <text class="add-text">添加照片</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 其他信息 -->
+    <view class="form-group">
+      <text class="group-title">其他信息</text>
+      
+      <view class="form-item">
+        <text class="item-label">发现地点</text>
+        <view class="item-picker" bindtap="onChooseLocation">
+          <text class="picker-text">{{cat.location || '点击选择位置'}}</text>
+          <text class="picker-arrow">📍</text>
+        </view>
+      </view>
+
+      <view class="form-item switch-item">
+        <text class="item-label">紧急救助</text>
+        <switch 
+          checked="{{cat.urgent}}" 
+          color="#FF9800"
+          bindchange="onUrgentChange" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="save-section">
+    <button class="save-btn" bindtap="onSave">保存档案</button>
+  </view>
+</view>

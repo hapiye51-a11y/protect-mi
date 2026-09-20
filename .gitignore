@@ -1,0 +1,24 @@
+.DS_Store
+
+# WeChat DevTools local/private settings
+project.private.config.json
+miniprogram/project.private.config.json
+miniprogram/.vscode/
+miniprogram/.claude/
+miniprogram/sourcemap.zip
+
+# Dependencies and build/cache output
+node_modules/
+miniprogram_npm/
+dist/
+build/
+coverage/
+*.log
+
+# Local temporary workspaces
+.codex/
+artifacts/
+video-assets/
+xhs-tools/
+analysis/
+minitool-dist/

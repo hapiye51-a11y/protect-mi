@@ -1,0 +1,152 @@
+/* ========== 猫咪百科页面 - 清新绿色风格 ========== */
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #E8F5E9 0%, #F5F9F5 10%, #FFFFFF 100%);
+}
+
+/* Tab 切换 */
+.tab-bar {
+  display: flex;
+  background: #FFFFFF;
+  padding: 16rpx 24rpx;
+  gap: 12rpx;
+  border-radius: 0 0 32rpx 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(76, 175, 80, 0.08);
+  margin-bottom: 24rpx;
+}
+
+.tab-item {
+  flex: 1;
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #666;
+  border-radius: 24rpx;
+  background: #F5F9F5;
+  transition: all 0.3s ease;
+}
+
+.tab-item.active {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4rpx 12rpx rgba(76, 175, 80, 0.25);
+}
+
+/* 内容区 */
+.content-area {
+  padding: 0 24rpx;
+}
+
+/* 卡片 */
+.card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(76, 175, 80, 0.08);
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.card-content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 品种卡片 */
+.breed-card {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(76, 175, 80, 0.08);
+}
+
+.breed-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 16rpx;
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  margin-right: 20rpx;
+}
+
+.breed-info {
+  flex: 1;
+}
+
+.breed-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.breed-desc {
+  font-size: 24rpx;
+  color: #888;
+}
+
+/* 行为卡片 */
+.behavior-item {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(76, 175, 80, 0.08);
+}
+
+.behavior-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.behavior-icon {
+  font-size: 40rpx;
+  margin-right: 12rpx;
+}
+
+.behavior-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.behavior-desc {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 禁忌列表 */
+.danger-item {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(244, 67, 54, 0.08);
+  border-left: 6rpx solid #F44336;
+}
+
+.danger-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #F44336;
+  margin-bottom: 8rpx;
+}
+
+.danger-desc {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}

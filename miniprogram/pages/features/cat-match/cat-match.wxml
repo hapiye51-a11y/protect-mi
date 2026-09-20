@@ -1,0 +1,82 @@
+<view class="container">
+  <!-- Tab 切换 -->
+  <view class="tab-bar">
+    <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">走失寻猫</view>
+    <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">捡到寻主</view>
+  </view>
+
+  <!-- 走失寻猫 -->
+  <view class="content-area" wx:if="{{currentTab === 0}}">
+    <view class="post-btn" bindtap="postLost">
+      <text class="post-icon">📝</text>
+      <text class="post-text">发布走失信息</text>
+    </view>
+    
+    <!-- 加载状态 -->
+    <view class="loading-state" wx:if="{{loading && lostList.length === 0}}">
+      <text class="loading-icon">⏳</text>
+      <text class="loading-text">加载中...</text>
+    </view>
+    
+    <!-- 列表 -->
+    <view class="card-list" wx:if="{{lostList.length > 0}}">
+      <view class="match-card" wx:for="{{lostList}}" wx:key="id" bindtap="viewDetail" data-item="{{item}}">
+        <image class="card-image" src="{{item.image}}" mode="aspectFill" lazy-load bindtap="previewImage" data-current="{{item.image}}" data-urls="{{item.photos}}" catchtap="previewImage" />
+        <view class="card-info">
+          <view class="card-header">
+            <text class="card-title">{{item.catName}}</text>
+            <text class="card-reward" wx:if="{{item.reward > 0}}">💰 {{item.reward}}元</text>
+          </view>
+          <text class="card-desc">{{item.features}}</text>
+          <view class="card-meta">
+            <text class="meta-item">📍 {{item.location}}</text>
+            <text class="meta-item">{{item.time}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{!loading && lostList.length === 0}}">
+      <text class="empty-icon">🔍</text>
+      <text class="empty-text">暂无走失信息</text>
+      <text class="empty-tip">如果您知道有猫咪走失，请发布信息帮助寻找</text>
+    </view>
+  </view>
+
+  <!-- 捡到寻主 -->
+  <view class="content-area" wx:if="{{currentTab === 1}}">
+    <view class="post-btn" bindtap="postFound">
+      <text class="post-icon">📝</text>
+      <text class="post-text">发布捡到信息</text>
+    </view>
+    
+    <!-- 加载状态 -->
+    <view class="loading-state" wx:if="{{loading && foundList.length === 0}}">
+      <text class="loading-icon">⏳</text>
+      <text class="loading-text">加载中...</text>
+    </view>
+    
+    <!-- 列表 -->
+    <view class="card-list" wx:if="{{foundList.length > 0}}">
+      <view class="match-card" wx:for="{{foundList}}" wx:key="id" bindtap="viewDetail" data-item="{{item}}">
+        <image class="card-image" src="{{item.image}}" mode="aspectFill" lazy-load bindtap="previewImage" data-current="{{item.image}}" data-urls="{{item.photos}}" catchtap="previewImage" />
+        <view class="card-info">
+          <text class="card-title">{{item.catName}}</text>
+          <text class="card-desc">{{item.features}}</text>
+          <view class="card-meta">
+            <text class="meta-item">📍 {{item.location}}</text>
+            <text class="meta-item">{{item.time}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{!loading && foundList.length === 0}}">
+      <text class="empty-icon">😺</text>
+      <text class="empty-text">暂无捡到信息</text>
+      <text class="empty-tip">如果您捡到了猫咪，请发布信息帮助寻找主人</text>
+    </view>
+  </view>
+</view>

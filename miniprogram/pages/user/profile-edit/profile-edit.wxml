@@ -1,0 +1,79 @@
+<view class="container">
+  <!-- 头部提示 -->
+  <view class="header-tips">
+    <text class="tips-icon">👋</text>
+    <text class="tips-text">完善个人信息，开启守护之旅</text>
+  </view>
+
+  <!-- 表单区域 -->
+  <view class="form-section">
+    <!-- 头像选择 -->
+    <view class="avatar-section">
+      <button
+        class="avatar-btn"
+        open-type="chooseAvatar"
+        bindchooseavatar="onChooseAvatar"
+        hover-class="avatar-hover">
+        <image
+          wx:if="{{avatarUrl}}"
+          class="avatar-image"
+          src="{{avatarUrl}}"
+          mode="aspectFill" />
+        <view wx:else class="avatar-image avatar-default">
+          <text class="avatar-icon">🐱</text>
+        </view>
+        <view class="avatar-badge">
+          <text>📷</text>
+        </view>
+      </button>
+      <text class="avatar-hint">点击更换头像</text>
+    </view>
+
+    <!-- 昵称输入 + 预览 -->
+    <view class="form-item">
+      <view class="item-label">
+        <text class="label-text">昵称</text>
+        <text class="label-required">*</text>
+      </view>
+      <view class="input-wrapper">
+        <image
+          wx:if="{{avatarUrl}}"
+          class="input-avatar"
+          src="{{avatarUrl}}"
+          mode="aspectFill" />
+        <view wx:else class="input-avatar avatar-default">
+          <text>🐱</text>
+        </view>
+        <input
+          class="nickname-input"
+          type="nickname"
+          placeholder="点击快速填充微信昵称"
+          placeholder-class="input-placeholder"
+          value="{{nickName}}"
+          bindinput="onNicknameInput"
+          maxlength="20" />
+        <text class="char-count">{{nickName.length}}/20</text>
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view class="submit-section">
+      <button
+        class="submit-btn {{canSubmit && !isUploading ? 'active' : ''}}"
+        hover-class="btn-hover"
+        disabled="{{!canSubmit || isUploading}}"
+        bindtap="onSubmit">
+        {{isUploading ? '保存中...' : '完成'}}
+      </button>
+      <view class="skip-btn" bindtap="onSkip">
+        <text class="skip-text">暂不登录，先逛逛</text>
+      </view>
+    </view>
+
+    <!-- 底部提示 -->
+    <view class="footer-tips">
+      <text class="footer-icon">🔒</text>
+      <text class="footer-text">您的信息仅用于小程序内展示，我们会妥善保护</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,71 @@
+<view class="page">
+  <!-- Logo区域 -->
+  <view class="logo-section">
+    <view class="logo">🐱</view>
+    <text class="app-name">守护咪</text>
+    <text class="slogan">用爱守护每一只流浪猫</text>
+    <text class="version">v{{version}}</text>
+  </view>
+
+  <!-- 简介 -->
+  <view class="section">
+    <view class="intro">
+      <text>"守护咪"是一款专注于流浪猫救助的微信小程序，结合科学养宠知识、法律援助工具和社区互动功能，为流浪猫救助志愿者和爱猫人士提供全方位的支持。</text>
+    </view>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="section">
+    <text class="section-title">联系我们</text>
+    <view class="list">
+      <view class="item" bindtap="copyEmail">
+        <text class="icon">📧</text>
+        <view class="content">
+          <text class="label">邮箱</text>
+          <text class="value">{{contactEmail}}</text>
+        </view>
+        <text class="copy-btn">复制</text>
+      </view>
+      <view class="item" bindtap="copyWechat">
+        <text class="icon">💬</text>
+        <view class="content">
+          <text class="label">微信</text>
+          <text class="value">{{contactWechat}}</text>
+        </view>
+        <text class="copy-btn">复制</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 法律条款 -->
+  <view class="section">
+    <text class="section-title">法律条款</text>
+    <view class="list">
+      <view class="item clickable" bindtap="viewPrivacy">
+        <text class="label">隐私政策</text>
+        <text class="arrow">›</text>
+      </view>
+      <view class="item clickable" bindtap="viewAgreement">
+        <text class="label">用户协议</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 其他 -->
+  <view class="section">
+    <text class="section-title">其他</text>
+    <view class="list">
+      <view class="item clickable" bindtap="checkUpdate">
+        <text class="label">检查更新</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 版权 -->
+  <view class="copyright">
+    <text>© 2024 守护咪团队</text>
+    <text>用爱守护，让每一只流浪猫都能被温柔以待 🐾</text>
+  </view>
+</view>

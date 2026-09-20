@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "咪咪守护站",
+  "enablePullDownRefresh": false,
+  "backgroundColor": "#F5F9F5",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "custom-tabbar": "/components/custom-tabbar/custom-tabbar"
+  }
+}

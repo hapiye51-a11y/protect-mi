@@ -1,0 +1,42 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="header-icon">{{emergency.icon}}</view>
+    <view class="header-info">
+      <text class="header-title">{{emergency.title}}</text>
+      <view class="urgency-badge level-{{emergency.urgency}}">{{emergency.urgencyText}}</view>
+    </view>
+  </view>
+
+  <!-- 摘要 -->
+  <view class="summary-card">
+    <text class="summary-text">{{emergency.summary}}</text>
+  </view>
+
+  <!-- 处理步骤 -->
+  <view class="steps-section" wx:if="{{emergency.steps.length > 0}}">
+    <view class="section-title">
+      <text class="title-icon">📋</text>
+      <text class="title-text">处理步骤</text>
+    </view>
+    <view class="steps-list">
+      <view class="step-item" wx:for="{{emergency.steps}}" wx:key="index">
+        <text class="step-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 警告 -->
+  <view class="warning-card" wx:if="{{emergency.warning}}">
+    <text class="warning-icon">⚠️</text>
+    <text class="warning-text">{{emergency.warning}}</text>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="footer-actions">
+    <button class="action-btn secondary" bindtap="goBack">返回</button>
+    <button class="action-btn primary" bindtap="searchHospital">查找附近医院</button>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>

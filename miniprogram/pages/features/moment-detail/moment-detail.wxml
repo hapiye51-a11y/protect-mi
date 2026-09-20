@@ -1,0 +1,73 @@
+<view class="page">
+  <!-- 动态内容 -->
+  <view class="moment">
+    <view class="moment-header">
+      <view class="moment-avatar"><text>🐱</text></view>
+      <view class="moment-user">
+        <text class="moment-name">{{moment.username}}</text>
+        <text class="moment-time">{{moment.time}}</text>
+      </view>
+    </view>
+    <text class="moment-content">{{moment.content}}</text>
+    
+    <!-- 图片 -->
+    <view class="moment-images" wx:if="{{moment.images && moment.images.length > 0}}">
+      <image wx:for="{{moment.images}}" wx:key="*this" src="{{item}}" mode="aspectFill" bindtap="previewImage" data-url="{{item}}" />
+    </view>
+    
+    <!-- 点赞 -->
+    <view class="moment-footer">
+      <view class="moment-action" bindtap="likeMoment">
+        <text>{{moment.liked ? '❤️' : '🤍'}} {{moment.likes}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 评论列表 -->
+  <view class="comments">
+    <view class="c-header">
+      <text class="c-title">评论 ({{comments.length}})</text>
+    </view>
+    
+    <view class="c-list" wx:if="{{comments.length > 0}}">
+      <view class="c-item" wx:for="{{comments}}" wx:key="id">
+        <view class="c-user">
+          <view class="c-avatar"><text>🐱</text></view>
+          <text class="c-name">{{item.author}}</text>
+          <text class="c-time">{{item.time}}</text>
+        </view>
+        <text class="c-content">{{item.content}}</text>
+        <view class="c-actions">
+          <view class="c-action" bindtap="likeComment" data-id="{{item.id}}">
+            <text>{{item.liked ? '❤️' : '🤍'}} {{item.likes}}</text>
+          </view>
+          <view class="c-action" bindtap="replyTo" data-id="{{item.id}}" data-author="{{item.author}}">
+            <text>回复</text>
+          </view>
+        </view>
+        
+        <!-- 回复列表 -->
+        <view class="replies" wx:if="{{item.replies && item.replies.length > 0}}">
+          <view class="reply-item" wx:for="{{item.replies}}" wx:for-item="reply" wx:key="id">
+            <text class="reply-name">{{reply.author}}</text>
+            <text class="reply-to" wx:if="{{reply.toAuthor}}"> 回复 {{reply.toAuthor}}</text>
+            <text class="reply-content">：{{reply.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty" wx:if="{{comments.length === 0}}">
+      <text class="empty-icon">💬</text>
+      <text class="empty-text">暂无评论，快来抢沙发吧！</text>
+    </view>
+  </view>
+
+  <!-- 评论输入 -->
+  <view class="footer">
+    <input class="input" placeholder="{{replyToAuthor ? '回复 ' + replyToAuthor + '...' : '写下你的评论...'}}" value="{{myComment}}" bindinput="setMyComment" />
+    <view class="btn" bindtap="submitComment">
+      <text>发送</text>
+    </view>
+  </view>
+</view>

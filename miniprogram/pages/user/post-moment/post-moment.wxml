@@ -1,0 +1,137 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="cancel-btn" hover-class="btn-hover" bindtap="onCancel">
+      <text class="cancel-text">取消</text>
+    </view>
+    <text class="header-title">发布动态</text>
+    <view class="publish-btn {{canPublish ? 'active' : ''}}" hover-class="btn-hover" bindtap="onPublish">
+      <text class="publish-text">发布</text>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y>
+    <!-- 文字输入区 -->
+    <view class="text-section">
+      <textarea
+        class="text-input"
+        placeholder="分享你和猫咪的温馨瞬间..."
+        placeholder-class="placeholder"
+        value="{{content}}"
+        bindinput="onContentInput"
+        maxlength="500"
+        show-confirm-bar="{{false}}"
+        auto-height />
+      <text class="char-count">{{content.length}}/500</text>
+    </view>
+
+    <!-- 图片上传区 -->
+    <view class="photo-section">
+      <view class="section-title">
+        <text class="title-icon">📷</text>
+        <text class="title-text">照片/视频</text>
+        <text class="title-hint">最多9张</text>
+      </view>
+      <view class="photo-grid">
+        <!-- 已上传的图片 -->
+        <view
+          class="photo-item"
+          wx:for="{{images}}"
+          wx:key="*this">
+          <image class="photo-image" src="{{item}}" mode="aspectFill" />
+          <view class="photo-delete" bindtap="deleteImage" data-index="{{index}}">
+            <text class="delete-icon">✕</text>
+          </view>
+        </view>
+        <!-- 上传按钮 -->
+        <view class="photo-item upload-btn" hover-class="upload-hover" wx:if="{{images.length < 9}}" bindtap="chooseImage">
+          <text class="upload-icon">+</text>
+          <text class="upload-text">添加</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 位置选择 -->
+    <view class="location-section" hover-class="section-hover" bindtap="chooseLocation">
+      <view class="section-row">
+        <view class="row-left">
+          <text class="row-icon">📍</text>
+          <text class="row-label">添加位置</text>
+        </view>
+        <view class="row-right">
+          <text class="location-text" wx:if="{{location}}">{{location}}</text>
+          <text class="row-arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 话题标签 -->
+    <view class="tag-section">
+      <view class="section-title">
+        <text class="title-icon">#</text>
+        <text class="title-text">添加话题</text>
+      </view>
+      <view class="tag-list">
+        <view
+          class="tag-item {{selectedTags.includes(item) ? 'active' : ''}}"
+          hover-class="tag-hover"
+          wx:for="{{tags}}"
+          wx:key="*this"
+          bindtap="toggleTag"
+          data-tag="{{item}}">
+          <text class="tag-text">#{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 隐私设置 -->
+    <view class="privacy-section">
+      <view class="section-title">
+        <text class="title-icon">⚙️</text>
+        <text class="title-text">发布设置</text>
+      </view>
+
+      <!-- 匿名发布 -->
+      <view class="setting-item">
+        <view class="setting-left">
+          <text class="setting-icon">🎭</text>
+          <view class="setting-info">
+            <text class="setting-label">匿名发布</text>
+            <text class="setting-desc">昵称将显示为"爱心守护者"</text>
+          </view>
+        </view>
+        <switch class="setting-switch" checked="{{anonymous}}" bindchange="onAnonymousChange" color="#FF9654" />
+      </view>
+
+      <!-- 允许评论 -->
+      <view class="setting-item">
+        <view class="setting-left">
+          <text class="setting-icon">💬</text>
+          <view class="setting-info">
+            <text class="setting-label">允许评论</text>
+            <text class="setting-desc">其他用户可以评论这条动态</text>
+          </view>
+        </view>
+        <switch class="setting-switch" checked="{{allowComment}}" bindchange="onAllowCommentChange" color="#FF9654" />
+      </view>
+    </view>
+
+    <!-- 温馨提示 -->
+    <view class="tips-section">
+      <view class="tips-box">
+        <text class="tips-icon">💡</text>
+        <view class="tips-content">
+          <text class="tips-title">发布建议</text>
+          <text class="tips-text">• 真实分享您与猫咪的故事</text>
+          <text class="tips-text">• 添加清晰的照片更易获得关注</text>
+          <text class="tips-text">• 标注位置可帮助附近的爱心人士</text>
+          <text class="tips-text">• 遵守社区规范，文明发言</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部安全距离 -->
+    <view class="safe-area"></view>
+  </scroll-view>
+</view>

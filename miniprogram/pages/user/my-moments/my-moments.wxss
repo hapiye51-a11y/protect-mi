@@ -1,0 +1,186 @@
+/* 我的动态页面 */
+page {
+  background: #F8F9FA;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 24rpx;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 48rpx;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  line-height: 1;
+  margin-bottom: 32rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 48rpx;
+}
+
+.publish-btn {
+  width: 240rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
+  border-radius: 40rpx;
+  color: #FFFFFF;
+  font-size: 28rpx;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 4rpx 16rpx rgba(255, 152, 0, 0.3);
+}
+
+/* 动态列表 */
+.moments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.moment-item {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* 动态内容 */
+.moment-content {
+  margin-bottom: 20rpx;
+}
+
+.moment-text {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.6;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.moment-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12rpx;
+}
+
+.moment-image {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 12rpx;
+  object-fit: cover;
+}
+
+/* 动态信息 */
+.moment-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #F0F0F0;
+}
+
+.moment-time {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.moment-stats {
+  display: flex;
+  gap: 24rpx;
+}
+
+.stat-item {
+  font-size: 22rpx;
+  color: #666666;
+}
+
+/* 删除按钮 */
+.moment-actions {
+  position: absolute;
+  top: 28rpx;
+  right: 28rpx;
+}
+
+.delete-btn {
+  width: 56rpx;
+  height: 56rpx;
+  background: rgba(255, 82, 82, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:active {
+  background: rgba(255, 82, 82, 0.2);
+  transform: scale(0.9);
+}
+
+.delete-icon {
+  font-size: 28rpx;
+  line-height: 1;
+}
+
+/* 加载状态 */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80rpx 0;
+}
+
+.loading-text {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/* 发布按钮 */
+.publish-fab {
+  position: fixed;
+  bottom: calc(120rpx + env(safe-area-inset-bottom));
+  right: 32rpx;
+  width: 112rpx;
+  height: 112rpx;
+  background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(255, 152, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.publish-fab:active {
+  transform: scale(0.9);
+  box-shadow: 0 4rpx 12rpx rgba(255, 152, 0, 0.3);
+}
+
+.fab-icon {
+  font-size: 48rpx;
+  line-height: 1;
+}

@@ -1,0 +1,77 @@
+/* ========== 自定义TabBar - 5个Tab布局 ========== */
+.custom-tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 999;
+  height: 120rpx;
+  border-top-left-radius: 24rpx;
+  border-top-right-radius: 24rpx;
+  box-shadow: 0 -4rpx 20rpx rgba(76, 175, 80, 0.08);
+}
+
+/* Tab项 */
+.tabbar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8rpx 0;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.tabbar-item.active {
+  position: relative;
+}
+
+.tabbar-item.active .tabbar-text {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+/* 图标容器 */
+.tabbar-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4rpx;
+}
+
+/* 中间发布按钮特殊样式 */
+.tabbar-icon-wrap.center {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  box-shadow: 0 6rpx 24rpx rgba(76, 175, 80, 0.35);
+  margin-top: -32rpx;
+  margin-bottom: 2rpx;
+}
+
+.tabbar-icon-wrap.center .tabbar-icon {
+  font-size: 44rpx;
+}
+
+.tabbar-icon {
+  font-size: 44rpx;
+  line-height: 1;
+}
+
+.tabbar-text {
+  font-size: 22rpx;
+  color: #9CA3AF;
+  transition: all 0.3s ease;
+}
+
+/* 激活状态 */
+.tabbar-item.active .tabbar-icon-wrap:not(.center) {
+  transform: scale(1.1);
+}

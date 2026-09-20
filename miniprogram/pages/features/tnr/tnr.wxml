@@ -1,0 +1,68 @@
+<view class="container">
+  <!-- 统计卡片 -->
+  <view class="stats-card">
+    <view class="stat-item">
+      <text class="stat-num">{{tnrCount}}</text>
+      <text class="stat-label">已绝育</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{inProgress}}</text>
+      <text class="stat-label">进行中</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{pendingCount}}</text>
+      <text class="stat-label">待绝育</text>
+    </view>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="action-grid">
+    <view class="action-card" bindtap="addTNR">
+      <text class="action-icon">📝</text>
+      <text class="action-title">新增记录</text>
+      <text class="action-desc">记录TNR流程</text>
+    </view>
+    <view class="action-card" bindtap="viewGuide">
+      <text class="action-icon">📖</text>
+      <text class="action-title">TNR指南</text>
+      <text class="action-desc">学习正确流程</text>
+    </view>
+  </view>
+
+  <!-- 记录列表 -->
+  <view class="record-section">
+    <view class="section-header">
+      <text class="section-title">绝育记录</text>
+      <text class="section-count">共{{records.length}}条</text>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading-state" wx:if="{{loading && records.length === 0}}">
+      <text class="loading-icon">⏳</text>
+      <text class="loading-text">加载中...</text>
+    </view>
+    
+    <!-- 列表 -->
+    <view class="record-list" wx:if="{{records.length > 0}}">
+      <view class="record-item" wx:for="{{records}}" wx:key="id" bindtap="viewDetail" data-item="{{item}}">
+        <image class="record-image" src="{{item.image}}" wx:if="{{item.image}}" mode="aspectFill" />
+        <view class="record-icon" wx:else>🐱</view>
+        <view class="record-status {{item.status}}">
+          <text>{{item.statusText}}</text>
+        </view>
+        <view class="record-info">
+          <text class="record-name">{{item.catName}}</text>
+          <text class="record-meta">📍 {{item.location}} · {{item.updateTime}}</text>
+        </view>
+        <text class="record-arrow">›</text>
+      </view>
+    </view>
+    
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{!loading && records.length === 0}}">
+      <text class="empty-icon">🏥</text>
+      <text class="empty-text">暂无TNR记录</text>
+      <text class="empty-hint">点击上方"新增记录"开始</text>
+    </view>
+  </view>
+</view>

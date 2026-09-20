@@ -1,0 +1,76 @@
+<view class="page">
+  <!-- 事件类型 -->
+  <view class="section">
+    <text class="label">事件类型</text>
+    <view class="types">
+      <view class="type {{type === 'abuse' ? 'active' : ''}}" bindtap="setType" data-type="abuse">
+        <text>🚨 虐待动物</text>
+      </view>
+      <view class="type {{type === 'poison' ? 'active' : ''}}" bindtap="setType" data-type="poison">
+        <text>☠️ 投毒</text>
+      </view>
+      <view class="type {{type === 'trap' ? 'active' : ''}}" bindtap="setType" data-type="trap">
+        <text>🎣 捕猎</text>
+      </view>
+      <view class="type {{type === 'other' ? 'active' : ''}}" bindtap="setType" data-type="other">
+        <text>📝 其他</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 事件描述 -->
+  <view class="section">
+    <text class="label">事件描述</text>
+    <textarea class="textarea" placeholder="请详细描述事件经过..." value="{{description}}" bindinput="setDescription" maxlength="500" />
+    <text class="count">{{description.length}}/500</text>
+  </view>
+
+  <!-- 时间地点 -->
+  <view class="section">
+    <text class="label">发生时间</text>
+    <picker mode="date" value="{{date}}" start="2020-01-01" end="{{today}}" bindchange="setDate">
+      <view class="picker">
+        <text>{{date || '选择日期'}}</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="section">
+    <text class="label">发生地点</text>
+    <view class="picker" bindtap="chooseLocation">
+      <text>{{location || '选择地点'}}</text>
+    </view>
+  </view>
+
+  <!-- 上传证据 -->
+  <view class="section">
+    <text class="label">上传证据</text>
+    <text class="tip">照片/视频（最多9个）</text>
+    <view class="photos">
+      <view class="photo" wx:for="{{photos}}" wx:key="*this">
+        <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-url="{{item}}" />
+        <text class="del" bindtap="delPhoto" data-index="{{index}}">×</text>
+      </view>
+      <view class="add-photo" wx:if="{{photos.length < 9}}" bindtap="addPhoto">
+        <text>+</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 施虐者信息 -->
+  <view class="section">
+    <text class="label">施虐者信息（选填）</text>
+    <input class="input" placeholder="特征描述、车牌号等" value="{{abuserInfo}}" bindinput="setAbuserInfo" />
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="section">
+    <text class="label">您的联系方式</text>
+    <input class="input" placeholder="手机号（用于后续跟进）" value="{{contact}}" bindinput="setContact" />
+  </view>
+
+  <!-- 提交 -->
+  <view class="btn-area">
+    <button class="btn" bindtap="submit">提交举报</button>
+  </view>
+</view>

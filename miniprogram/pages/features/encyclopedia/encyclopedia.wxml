@@ -1,0 +1,129 @@
+<view class="container">
+  <view class="page-header">
+    <text class="header-title">猫咪百科</text>
+    <text class="header-subtitle">了解喵星人的一切</text>
+  </view>
+
+  <view class="section-tabs">
+    <view
+      class="tab-item {{currentTab === 0 ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-index="0">
+      品种图鉴
+    </view>
+    <view
+      class="tab-item {{currentTab === 1 ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-index="1">
+      行为语译
+    </view>
+    <view
+      class="tab-item {{currentTab === 2 ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-index="2">
+      禁忌清单
+    </view>
+  </view>
+
+  <!-- 品种图鉴 -->
+  <scroll-view scroll-y class="content-area" wx:if="{{currentTab === 0}}">
+    <!-- 搜索栏 -->
+    <view class="search-bar">
+      <view class="search-input-wrapper">
+        <text class="search-icon">🔍</text>
+        <input
+          class="search-input"
+          type="text"
+          placeholder="搜索品种、性格、特征..."
+          value="{{searchKeyword}}"
+          bindinput="onSearchInput"
+          confirm-type="search" />
+        <view class="clear-btn" wx:if="{{searchKeyword}}" bindtap="clearSearch">
+          <text class="clear-icon">✕</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 品种列表 -->
+    <view class="breed-grid" wx:if="{{breeds.length > 0}}">
+      <view
+        class="breed-card"
+        wx:for="{{breeds}}"
+        wx:key="id"
+        bindtap="showBreedDetail"
+        data-breed="{{item}}">
+        <image class="breed-image" src="{{item.image}}" mode="aspectFill" lazy-load />
+        <view class="breed-info">
+          <text class="breed-name">{{item.name}}</text>
+          <text class="breed-name-en">{{item.nameEn}}</text>
+          <view class="breed-tag">{{item.tag}}</view>
+          <view class="breed-features">
+            <text class="feature-item" wx:for="{{item.features}}" wx:key="*this" wx:for-item="feature">
+              {{feature}}
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{breeds.length === 0}}">
+      <text class="empty-icon">🔍</text>
+      <text class="empty-text">没有找到相关品种</text>
+      <text class="empty-hint">试试其他关键词吧</text>
+    </view>
+  </scroll-view>
+
+  <!-- 行为语译 -->
+  <scroll-view scroll-y class="content-area" wx:if="{{currentTab === 1}}">
+    <view class="behavior-list">
+      <view
+        class="behavior-item"
+        wx:for="{{behaviors}}"
+        wx:key="id"
+        bindtap="showBehaviorDetail"
+        data-behavior="{{item}}">
+        <view class="behavior-icon-large">{{item.icon}}</view>
+        <view class="behavior-content">
+          <text class="behavior-title">{{item.behavior}}</text>
+          <text class="behavior-meaning">{{item.meaning}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 禁忌清单 -->
+  <scroll-view scroll-y class="content-area" wx:if="{{currentTab === 2}}">
+    <view class="warning-banner">
+      <text class="warning-icon">⚠️</text>
+      <text class="warning-text">以下物品对猫咪有害，请务必远离！</text>
+    </view>
+
+    <view class="taboo-section" wx:for="{{tabooCategories}}" wx:key="category">
+      <view class="taboo-category-title">
+        {{item.category}}
+      </view>
+      <view class="taboo-items">
+        <view
+          class="taboo-item danger-{{taboo.danger}}"
+          wx:for="{{item.items}}"
+          wx:key="name"
+          wx:for-item="taboo"
+          bindtap="showTabooDetail"
+          data-item="{{taboo}}">
+          <view class="taboo-header">
+            <text class="taboo-name">{{taboo.name}}</text>
+            <view class="danger-badge danger-{{taboo.danger}}">
+              <text wx:if="{{taboo.danger === 'high'}}">⚠️ 高危</text>
+              <text wx:if="{{taboo.danger === 'medium'}}">⚡ 中危</text>
+              <text wx:if="{{taboo.danger === 'low'}}">ℹ️ 低危</text>
+            </view>
+          </view>
+          <text class="taboo-reason">{{taboo.reason}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <loading show="{{loading}}" text="加载中..." />
+</view>

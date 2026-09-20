@@ -1,0 +1,177 @@
+.page {
+  min-height: 100vh;
+  background: #F5F9F5;
+}
+
+/* 标签栏 */
+.tabs {
+  display: flex;
+  background: #fff;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  padding: 16rpx 0;
+  position: relative;
+}
+
+.tab.active {
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48rpx;
+  height: 4rpx;
+  background: #4CAF50;
+  border-radius: 2rpx;
+}
+
+/* 操作栏 */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20rpx 32rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.action-btn {
+  font-size: 24rpx;
+  color: #4CAF50;
+}
+
+.divider {
+  margin: 0 20rpx;
+  color: #ddd;
+  font-size: 24rpx;
+}
+
+/* 通知列表 */
+.list {
+  padding: 20rpx 0;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  padding: 24rpx 32rpx;
+  background: #fff;
+  margin-bottom: 2rpx;
+  position: relative;
+}
+
+.item.unread {
+  background: #F0F7F0;
+}
+
+.avatar {
+  position: relative;
+  width: 88rpx;
+  height: 88rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.avatar image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #f0f0f0;
+}
+
+.type-icon {
+  position: absolute;
+  right: -8rpx;
+  bottom: -8rpx;
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 8rpx;
+}
+
+.time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.unread-dot {
+  position: absolute;
+  top: 28rpx;
+  right: 32rpx;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #FF5252;
+}
+
+/* 空状态 */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 加载中 */
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 60rpx 0;
+  color: #999;
+  font-size: 26rpx;
+}

@@ -1,0 +1,426 @@
+/* 社区页面 */
+.container {
+  min-height: 100vh;
+  background: #F5F9F5;
+  padding-bottom: 160rpx;
+}
+
+/* 头部 */
+.header {
+  padding: 40rpx 32rpx;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+}
+
+.title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.subtitle {
+  display: block;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 12rpx;
+}
+
+/* 标签 */
+.tabs {
+  display: flex;
+  background: #FFFFFF;
+  padding: 20rpx 32rpx;
+  gap: 20rpx;
+  margin-bottom: 8rpx;
+}
+
+.tab {
+  flex: 1;
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  background: #F5F9F5;
+  border-radius: 28rpx;
+}
+
+.tab.active {
+  background: #4CAF50;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+/* 内容区 */
+.content {
+  padding: 24rpx 32rpx;
+}
+
+/* 区块 */
+.section {
+  margin-bottom: 32rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding: 0 8rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-more {
+  font-size: 26rpx;
+  color: #4CAF50;
+}
+
+/* 救助列表 */
+.rescue-list {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+
+.rescue-item {
+  display: flex;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.rescue-item:last-child {
+  border-bottom: none;
+}
+
+.rescue-img {
+  width: 96rpx;
+  height: 96rpx;
+  background: #E8F5E9;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.rescue-img text {
+  font-size: 48rpx;
+}
+
+.rescue-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rescue-title-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.rescue-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.rescue-status {
+  font-size: 22rpx;
+  padding: 6rpx 14rpx;
+  border-radius: 12rpx;
+  margin-left: 16rpx;
+  background: #FFF3E0;
+  color: #FF9800;
+  flex-shrink: 0;
+}
+
+.rescue-status.urgent {
+  background: #FFEBEE;
+  color: #F44336;
+}
+
+.rescue-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12rpx;
+}
+
+.rescue-footer {
+  display: flex;
+  gap: 20rpx;
+}
+
+.rescue-author, .rescue-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 动态列表 */
+.moment-list {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+}
+
+.moment-item {
+  padding: 32rpx 24rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.moment-item:last-child {
+  border-bottom: none;
+}
+
+.moment-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.moment-avatar {
+  width: 72rpx;
+  height: 72rpx;
+  background: #E8F5E9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.moment-avatar text {
+  font-size: 36rpx;
+}
+
+.moment-user {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.moment-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.moment-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.moment-content {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 20rpx;
+}
+
+.moment-footer {
+  display: flex;
+  gap: 48rpx;
+  padding-top: 8rpx;
+}
+
+.moment-action {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.action-icon {
+  font-size: 36rpx;
+}
+
+.action-num {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 猫咪列表 */
+.cat-list {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+}
+
+.cat-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.cat-item:last-child {
+  border-bottom: none;
+}
+
+.cat-img {
+  width: 120rpx;
+  height: 120rpx;
+  background: #E8F5E9;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.cat-img text {
+  font-size: 56rpx;
+}
+
+.cat-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cat-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.cat-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.cat-status {
+  font-size: 22rpx;
+  padding: 6rpx 14rpx;
+  background: #E8F5E9;
+  color: #4CAF50;
+  border-radius: 12rpx;
+  margin-left: 14rpx;
+  flex-shrink: 0;
+}
+
+.cat-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12rpx;
+}
+
+.cat-progress {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 10rpx;
+  background: #E8F5E9;
+  border-radius: 5rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50 0%, #66BB6A 100%);
+  border-radius: 5rpx;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #888;
+  white-space: nowrap;
+}
+
+.cat-support {
+  padding: 16rpx 28rpx;
+  background: #4CAF50;
+  border-radius: 28rpx;
+  margin-left: 20rpx;
+  flex-shrink: 0;
+}
+
+.cat-support text {
+  font-size: 26rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+/* 问答列表 */
+.qa-list {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+}
+
+.qa-item {
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.qa-item:last-child {
+  border-bottom: none;
+}
+
+.qa-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.qa-type {
+  font-size: 24rpx;
+  padding: 6rpx 16rpx;
+  background: #E8F5E9;
+  color: #4CAF50;
+  border-radius: 12rpx;
+}
+
+.qa-solved {
+  font-size: 24rpx;
+  color: #4CAF50;
+  margin-left: 16rpx;
+}
+
+.qa-question {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 16rpx;
+}
+
+.qa-footer {
+  display: flex;
+  gap: 20rpx;
+}
+
+.qa-author, .qa-time, .qa-answers {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* FAB 按钮 */
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: 200rpx;
+  width: 112rpx;
+  height: 112rpx;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12rpx 32rpx rgba(76, 175, 80, 0.4);
+}
+
+.fab text {
+  font-size: 48rpx;
+}

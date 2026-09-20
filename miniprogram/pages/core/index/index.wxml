@@ -1,0 +1,174 @@
+<view class="container">
+  <!-- 顶部问候语区域 -->
+  <view class="header">
+    <view class="greeting">
+      <text class="greeting-text">{{greeting}}，</text>
+      <text class="greeting-name">{{userInfo.nickName || '爱心守护者'}}</text>
+      <text class="greeting-emoji">👋</text>
+    </view>
+    <text class="greeting-sub">{{greetingSub}}</text>
+  </view>
+
+  <!-- Banner 轮播 - 待领养猫咪 -->
+  <view class="banner-section">
+    <swiper class="banner-swiper" 
+            indicator-dots="{{true}}" 
+            indicator-color="rgba(255,255,255,0.4)" 
+            indicator-active-color="#FFFFFF" 
+            autoplay="{{true}}" 
+            interval="4000" 
+            circular="{{true}}"
+            wx:if="{{bannerCats.length > 0}}">
+      <swiper-item wx:for="{{bannerCats}}" wx:key="id" bindtap="onBannerTap" data-id="{{item._id}}">
+        <image class="banner-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="banner-overlay"></view>
+        <view class="banner-content">
+          <view class="banner-tags">
+            <view class="banner-tag urgent" wx:if="{{item.urgent}}">🆘 紧急救助</view>
+            <view class="banner-tag">{{item.statusText}}</view>
+          </view>
+          <text class="banner-name">{{item.name}}</text>
+          <text class="banner-info">{{item.age}} · {{item.breed}} · {{item.location}}</text>
+        </view>
+      </swiper-item>
+    </swiper>
+    
+    <view class="banner-empty" wx:if="{{bannerCats.length === 0}}">
+      <text class="empty-emoji">🐱</text>
+      <text class="empty-text">暂无待领养猫咪</text>
+      <text class="empty-hint">成为第一个发布救助信息的人吧</text>
+    </view>
+  </view>
+
+  <!-- 今日统计 -->
+  <view class="stats-bar">
+    <view class="stat-item">
+      <text class="stat-num">{{stats.rescued}}</text>
+      <text class="stat-label">已救助</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.adopted}}</text>
+      <text class="stat-label">已领养</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.volunteers}}</text>
+      <text class="stat-label">志愿者</text>
+    </view>
+  </view>
+
+  <!-- 今日待办 -->
+  <view class="todo-section">
+    <view class="section-header">
+      <text class="section-title">今日待办</text>
+      <text class="todo-count">{{todoCount}}项</text>
+    </view>
+    
+    <view class="todo-card">
+      <view class="todo-item" wx:for="{{todos}}" wx:key="id" bindtap="onTodoTap" data-item="{{item}}">
+        <view class="todo-icon {{item.done ? 'done' : item.type}}">
+          <text>{{item.icon}}</text>
+        </view>
+        <view class="todo-content">
+          <text class="todo-title">{{item.title}}</text>
+          <text class="todo-desc">{{item.desc}}</text>
+        </view>
+        <view class="todo-status {{item.done ? 'done' : ''}}">
+          <text>{{item.done ? '✓' : '去完成'}}</text>
+        </view>
+      </view>
+      
+      <view class="todo-empty" wx:if="{{todos.length === 0}}">
+        <text class="todo-empty-icon">🎉</text>
+        <text class="todo-empty-text">今天没有待办事项</text>
+        <text class="todo-empty-hint">去投喂猫咪，开始新的一天吧</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷功能入口 -->
+  <view class="quick-actions">
+    <view class="action-row">
+      <view class="action-card-small" bindtap="onFeedingCheckin">
+        <text class="action-icon-small">🍱</text>
+        <text class="action-title-small">投喂打卡</text>
+      </view>
+      <view class="action-card-small" bindtap="onDonation">
+        <text class="action-icon-small">❤️</text>
+        <text class="action-title-small">爱心捐赠</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 更多功能 -->
+  <view class="more-section">
+    <view class="section-header">
+      <text class="section-title">更多功能</text>
+    </view>
+    <view class="more-grid">
+      <view class="more-item" bindtap="onCatProfiles">
+        <view class="more-icon primary">
+          <text>📋</text>
+        </view>
+        <text class="more-title">猫咪档案</text>
+      </view>
+      <view class="more-item" bindtap="onCatMatch">
+        <view class="more-icon accent">
+          <text>🔍</text>
+        </view>
+        <text class="more-title">猫咪匹配</text>
+      </view>
+      <view class="more-item" bindtap="onTNR">
+        <view class="more-icon success">
+          <text>🏥</text>
+        </view>
+        <text class="more-title">TNR记录</text>
+      </view>
+      <view class="more-item" bindtap="onReport">
+        <view class="more-icon danger">
+          <text>🛡️</text>
+        </view>
+        <text class="more-title">反虐指南</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待领养猫咪网格 -->
+  <view class="cats-section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-title">待领养的小可爱</text>
+        <text class="section-count">{{urgentCats.length}}只</text>
+      </view>
+      <text class="section-more" bindtap="onCatProfiles">查看全部 →</text>
+    </view>
+    
+    <view class="cats-grid" wx:if="{{urgentCats.length > 0}}">
+      <view class="cat-card" wx:for="{{urgentCats}}" wx:key="id" bindtap="onCatDetail" data-id="{{item.id}}">
+        <view class="cat-image-wrap">
+          <image class="cat-image" src="{{item.image}}" mode="aspectFill" />
+          <view class="cat-urgent" wx:if="{{item.urgent}}">🆘</view>
+        </view>
+        <view class="cat-info">
+          <text class="cat-name">{{item.name}}</text>
+          <text class="cat-meta">{{item.age}} · {{item.breed}}</text>
+          <view class="cat-status-wrap">
+            <text class="cat-status">{{item.statusText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="cats-empty" wx:if="{{urgentCats.length === 0}}">
+      <text class="empty-emoji-big">😺</text>
+      <text class="empty-title">暂无待领养猫咪</text>
+      <text class="empty-hint">去发布救助信息，帮助更多流浪猫</text>
+    </view>
+  </view>
+
+  <!-- 底部留白 -->
+  <view class="bottom-space"></view>
+</view>
+
+<custom-tabbar currentPath="{{currentPath}}" />

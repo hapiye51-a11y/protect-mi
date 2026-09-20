@@ -1,0 +1,199 @@
+/* 投喂打卡页面 */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #E8F5E9 0%, #F5F9F5 10%, #FFFFFF 100%);
+  padding-bottom: 40rpx;
+}
+
+/* 统计卡片 */
+.stats-card {
+  margin: 24rpx;
+  padding: 28rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(76, 175, 80, 0.1);
+}
+
+.stats-header {
+  margin-bottom: 20rpx;
+}
+
+.stats-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-num {
+  display: block;
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #4CAF50;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #888;
+}
+
+.stat-divider {
+  width: 1rpx;
+  height: 48rpx;
+  background: #E8F5E9;
+}
+
+/* 打卡按钮 */
+.checkin-section {
+  text-align: center;
+  padding: 40rpx 24rpx;
+}
+
+.checkin-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  box-shadow: 0 12rpx 40rpx rgba(76, 175, 80, 0.4);
+  transition: all 0.3s ease;
+}
+
+.checkin-btn:active {
+  transform: scale(0.95);
+}
+
+.checkin-btn.disabled {
+  background: #CCC;
+  box-shadow: none;
+}
+
+.checkin-icon {
+  font-size: 64rpx;
+  margin-bottom: 12rpx;
+}
+
+.checkin-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.checkin-hint {
+  display: block;
+  font-size: 24rpx;
+  color: #888;
+  margin-top: 20rpx;
+}
+
+/* 历史记录 */
+.history-section {
+  margin: 24rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.section-more {
+  font-size: 24rpx;
+  color: #4CAF50;
+}
+
+.history-list {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  border-bottom: 1rpx solid #F5F9F5;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-left {
+  display: flex;
+  align-items: center;
+}
+
+.history-icon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: #E8F5E9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  margin-right: 16rpx;
+}
+
+.history-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.history-time {
+  font-size: 22rpx;
+  color: #888;
+}
+
+.history-location {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  color: #888;
+}

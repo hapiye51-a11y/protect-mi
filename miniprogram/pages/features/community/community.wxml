@@ -1,0 +1,119 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <text class="title">咪咪议事厅</text>
+    <text class="subtitle">分享爱与温暖的小天地</text>
+  </view>
+
+  <!-- 标签 -->
+  <view class="tabs">
+    <view class="tab {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+      <text>今日吸猫</text>
+    </view>
+    <view class="tab {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+      <text>云养打卡</text>
+    </view>
+    <view class="tab {{currentTab === 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">
+      <text>互助问答</text>
+    </view>
+  </view>
+
+  <!-- 今日吸猫 -->
+  <view wx:if="{{currentTab === 0}}">
+    <view class="section">
+      <text class="section-title">最近救助</text>
+      <view class="rescue-list">
+        <view class="rescue-item" wx:for="{{recentRescues}}" wx:key="id">
+          <view class="rescue-img"><text>🐱</text></view>
+          <view class="rescue-info">
+            <view class="rescue-title-row">
+              <text class="rescue-title">{{item.title}}</text>
+              <text class="rescue-status">{{item.statusText}}</text>
+            </view>
+            <text class="rescue-desc">{{item.description}}</text>
+            <view class="rescue-footer">
+              <text>{{item.author}}</text>
+              <text>{{item.time}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-title">猫咪动态</text>
+      <view class="moment-list">
+        <view class="moment-item" wx:for="{{catMoments}}" wx:key="id">
+          <view class="moment-header">
+            <view class="moment-avatar"><text>🐱</text></view>
+            <view class="moment-user">
+              <text class="moment-name">{{item.username}}</text>
+              <text class="moment-time">{{item.time}}</text>
+            </view>
+          </view>
+          <text class="moment-content">{{item.content}}</text>
+          <view class="moment-footer">
+            <view class="moment-action" bindtap="likeMoment" data-id="{{item.id}}">
+              <text>{{item.liked ? '❤️' : '🤍'}} {{item.likes}}</text>
+            </view>
+            <view class="moment-action" bindtap="viewMoment" data-id="{{item.id}}">
+              <text>💬 {{item.comments}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="fab" bindtap="postMoment"><text>📷</text></view>
+  </view>
+
+  <!-- 云养打卡 -->
+  <view wx:if="{{currentTab === 1}}">
+    <view class="section">
+      <text class="section-title">待领养猫咪</text>
+      <view class="cat-list">
+        <view class="cat-item" wx:for="{{adoptCats}}" wx:key="id" bindtap="onCatDetail" data-id="{{item.id}}">
+          <view class="cat-img"><text>🐱</text></view>
+          <view class="cat-info">
+            <view class="cat-header">
+              <text class="cat-name">{{item.name}}</text>
+              <text class="cat-status">{{item.statusText}}</text>
+            </view>
+            <text class="cat-desc">{{item.description}}</text>
+            <view class="cat-progress">
+              <view class="progress-bar">
+                <view class="progress-fill" style="width: {{item.progress}}%"></view>
+              </view>
+              <text class="progress-text">{{item.supporters}}人云养</text>
+            </view>
+          </view>
+          <view class="cat-support" catchtap="supportCat" data-id="{{item.id}}">
+            <text>云养</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 互助问答 -->
+  <view wx:if="{{currentTab === 2}}">
+    <view class="section">
+      <text class="section-title">热门问题</text>
+      <view class="qa-list">
+        <view class="qa-item" wx:for="{{questions}}" wx:key="id" bindtap="viewQuestion" data-item="{{item}}">
+          <view class="qa-header">
+            <text class="qa-type">{{item.typeText}}</text>
+          </view>
+          <text class="qa-question">{{item.question}}</text>
+          <view class="qa-footer">
+            <text>{{item.author}}</text>
+            <text>{{item.answerCount}}个回答</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="fab" bindtap="askQuestion"><text>❓</text></view>
+  </view>
+</view>
+
+<custom-tabbar currentPath="pages/features/community/community" />

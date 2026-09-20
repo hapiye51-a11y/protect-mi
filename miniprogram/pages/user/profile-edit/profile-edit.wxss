@@ -1,0 +1,246 @@
+/* 个人信息填写页 - 简洁一体风格 */
+page {
+  background: #F5F9F5;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 24rpx;
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+}
+
+/* 头部提示 */
+.header-tips {
+  background: linear-gradient(135deg, #FFF4ED 0%, #FFE5CC 100%);
+  border-radius: 20rpx;
+  padding: 20rpx 24rpx;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.tips-icon {
+  font-size: 32rpx;
+}
+
+.tips-text {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #92400E;
+}
+
+/* 主卡片 */
+.form-section {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 40rpx 32rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+/* 头像区域 */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 32rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+  margin-bottom: 32rpx;
+}
+
+.avatar-btn {
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  margin-bottom: 16rpx;
+}
+
+.avatar-btn::after {
+  display: none;
+}
+
+.avatar-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3rpx solid #FFECB3;
+}
+
+.avatar-default {
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  border-color: #C8E6C9;
+}
+
+.avatar-icon {
+  font-size: 72rpx;
+}
+
+.avatar-badge {
+  position: absolute;
+  bottom: 2rpx;
+  right: 2rpx;
+  width: 48rpx;
+  height: 48rpx;
+  background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  border: 3rpx solid #fff;
+  box-shadow: 0 2rpx 8rpx rgba(255, 152, 0, 0.3);
+}
+
+.avatar-hover {
+  opacity: 0.9;
+}
+
+.avatar-hint {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 表单项 */
+.form-item {
+  margin-bottom: 24rpx;
+}
+
+.item-label {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  margin-bottom: 16rpx;
+}
+
+.label-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.label-required {
+  color: #F44336;
+  font-size: 24rpx;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #F8F9FA;
+  border-radius: 16rpx;
+  padding: 12rpx 20rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+  gap: 16rpx;
+}
+
+.input-wrapper:focus-within {
+  border-color: #4CAF50;
+  background: #fff;
+}
+
+.input-avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 32rpx;
+}
+
+.nickname-input {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333;
+  height: 64rpx;
+}
+
+.input-placeholder {
+  color: #BDBDBD;
+}
+
+.char-count {
+  font-size: 24rpx;
+  color: #BDBDBD;
+  margin-left: 16rpx;
+}
+
+/* 提交按钮区域 */
+.submit-section {
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 96rpx;
+  background: #E0E0E0;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #BDBDBD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.submit-btn.active {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 8rpx 24rpx rgba(76, 175, 80, 0.4);
+}
+
+.submit-btn[disabled] {
+  opacity: 1;
+}
+
+.btn-hover {
+  transform: scale(0.98);
+}
+
+.skip-btn {
+  text-align: center;
+  padding: 12rpx 0;
+}
+
+.skip-text {
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* 底部提示 */
+.footer-tips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rpx;
+  padding: 32rpx 0 8rpx;
+}
+
+.footer-icon {
+  font-size: 22rpx;
+}
+
+.footer-text {
+  font-size: 22rpx;
+  color: #9CA3AF;
+}

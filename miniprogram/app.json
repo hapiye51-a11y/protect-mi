@@ -1,0 +1,90 @@
+{
+  "pages": [
+    "pages/user/login/login",
+    "pages/core/index/index",
+    "pages/core/map/map",
+    "pages/core/publish/publish",
+    "pages/core/publish/publish-placeholder",
+    "pages/core/cat-profiles/cat-profiles",
+    "pages/core/profile/profile",
+    "pages/features/community/community",
+    "pages/features/encyclopedia/encyclopedia",
+    "pages/features/science/science",
+    "pages/features/protection/protection",
+    "pages/features/report-risk/report-risk",
+    "pages/features/leaderboard/leaderboard",
+    "pages/features/feeding-checkin/feeding-checkin",
+    "pages/features/cat-match/cat-match",
+    "pages/features/tnr/tnr",
+    "pages/user/profile-edit/profile-edit",
+    "pages/user/my-posts/my-posts",
+    "pages/user/my-moments/my-moments",
+    "pages/user/cat-edit/cat-edit",
+    "pages/user/post-moment/post-moment",
+    "pages/features/post-match/post-match",
+    "pages/features/tnr-record/tnr-record",
+    "pages/features/rescue-plan/rescue-plan",
+    "pages/features/ask-question/ask-question",
+    "pages/features/question-detail/question-detail",
+    "pages/features/moment-detail/moment-detail",
+    "pages/features/report-abuse/report-abuse",
+    "pages/core/cat-detail/cat-detail",
+    "pages/core/cat-health/cat-health",
+    "pages/core/cat-album/cat-album",
+    "pages/core/cat-diary/cat-diary",
+    "pages/user/health-add/health-add",
+    "pages/user/diary-add/diary-add",
+    "pages/user/notifications/notifications",
+    "pages/user/privacy-settings/privacy-settings",
+    "pages/user/about/about",
+    "pages/features/emergency-detail/emergency-detail",
+    "pages/legal/privacy/privacy",
+    "pages/legal/user-agreement/user-agreement",
+    "pages/admin/review/review"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#4CAF50",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "咪咪守护站",
+    "backgroundColor": "#F5F9F5",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#9CA3AF",
+    "selectedColor": "#4CAF50",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/core/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/core/map/map",
+        "text": "地图"
+      },
+      {
+        "pagePath": "pages/core/publish/publish",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/features/community/community",
+        "text": "社区"
+      },
+      {
+        "pagePath": "pages/core/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取你的位置信息，用于显示附近的流浪猫和风险区域"
+    }
+  }
+}

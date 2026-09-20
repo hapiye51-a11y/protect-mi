@@ -1,0 +1,135 @@
+<view class="container">
+  <!-- 顶部区域 -->
+  <view class="header-section">
+    <view class="header-bg">
+      <view class="header-decorate">
+        <text class="decorate-emoji">🐱</text>
+        <text class="decorate-emoji">🐈</text>
+        <text class="decorate-emoji">😺</text>
+      </view>
+    </view>
+    <view class="header-content">
+      <text class="header-title">猫咪档案</text>
+      <text class="header-subtitle">每一只都值得被记住</text>
+    </view>
+    
+    <!-- 统计卡片 -->
+    <view class="stats-card">
+      <view class="stat-item">
+        <text class="stat-num">{{cats.length}}</text>
+        <text class="stat-label">全部档案</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item highlight">
+        <text class="stat-num">{{adoptedCount}}</text>
+        <text class="stat-label">已领养</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{treatmentCount}}</text>
+        <text class="stat-label">治疗中</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 筛选标签 -->
+  <view class="filter-section">
+    <scroll-view class="filter-scroll" scroll-x>
+      <view class="filter-item {{filterType === 'all' ? 'active' : ''}}" bindtap="switchFilter" data-type="all">
+        <text class="filter-icon">🐾</text>
+        <text class="filter-text">全部</text>
+      </view>
+      <view class="filter-item {{filterType === 'available' ? 'active' : ''}}" bindtap="switchFilter" data-type="available">
+        <text class="filter-icon">🏠</text>
+        <text class="filter-text">待领养</text>
+      </view>
+      <view class="filter-item {{filterType === 'adopted' ? 'active' : ''}}" bindtap="switchFilter" data-type="adopted">
+        <text class="filter-icon">💕</text>
+        <text class="filter-text">已领养</text>
+      </view>
+      <view class="filter-item {{filterType === 'treatment' ? 'active' : ''}}" bindtap="switchFilter" data-type="treatment">
+        <text class="filter-icon">🏥</text>
+        <text class="filter-text">治疗中</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 猫咪列表 -->
+  <view class="cats-list" wx:if="{{cats.length > 0}}">
+    <view class="cat-card" wx:for="{{cats}}" wx:key="_id" bindtap="onCatDetail" data-id="{{item._id}}">
+      <!-- 编辑和删除按钮（只对自己的档案显示） -->
+      <view class="card-actions-top" wx:if="{{item.isOwner}}">
+        <view class="action-icon" catchtap="onEdit" data-id="{{item._id}}">
+          <text>✏️</text>
+        </view>
+        <view class="action-icon delete" catchtap="onDeleteCat" data-id="{{item._id}}">
+          <text>🗑️</text>
+        </view>
+      </view>
+      
+      <!-- 左侧图片区 -->
+      <view class="card-image-section">
+        <image class="cat-avatar" src="{{item.avatar || item.image}}" mode="aspectFill" />
+        <view class="status-dot status-{{item.status}}"></view>
+      </view>
+      
+      <!-- 右侧信息区 -->
+      <view class="card-info-section">
+        <view class="card-header">
+          <view class="name-row">
+            <text class="cat-name">{{item.name}}</text>
+            <text class="gender-icon gender-{{item.gender}}">{{item.gender === 'male' ? '♂' : '♀'}}</text>
+          </view>
+          <view class="status-badge status-{{item.status}}">{{item.statusText}}</view>
+        </view>
+        
+        <view class="card-meta">
+          <view class="meta-item">
+            <text class="meta-icon">📋</text>
+            <text class="meta-text">{{item.breed || '未知品种'}}</text>
+          </view>
+          <view class="meta-item">
+            <text class="meta-icon">🎂</text>
+            <text class="meta-text">{{item.age || '未知年龄'}}</text>
+          </view>
+        </view>
+        
+        <view class="card-tags">
+          <text class="card-tag" wx:if="{{item.isNeutered}}">已绝育</text>
+          <text class="card-tag" wx:if="{{item.color}}">{{item.color}}</text>
+          <text class="card-tag location">{{item.location || '位置未知'}}</text>
+        </view>
+        
+        <view class="card-footer">
+          <text class="rescue-date">救助于 {{item.rescueDate}}</text>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <view class="empty-illustration">
+      <text class="empty-emoji">🐱</text>
+      <text class="empty-emoji">🐱</text>
+      <text class="empty-emoji">🐱</text>
+    </view>
+    <text class="empty-title">暂无猫咪档案</text>
+    <text class="empty-desc">更多档案正在整理中，敬请期待</text>
+    <view class="empty-dots">
+      <text class="dot"></text>
+      <text class="dot active"></text>
+      <text class="dot"></text>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>
+
+<!-- 浮动按钮 -->
+<view class="fab-container">
+  <view class="fab-button" bindtap="onAddCat">
+    <text class="fab-icon">+</text>
+  </view>
+</view>

@@ -1,0 +1,413 @@
+/* ========== 发布页面 - 清新绿色风格 ========== */
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #E8F5E9 0%, #F5F9F5 10%, #FFFFFF 100%);
+}
+
+/* 顶部装饰 */
+.header-decoration {
+  display: flex;
+  justify-content: center;
+  gap: 40rpx;
+  padding: 30rpx 0 10rpx;
+}
+
+.cat-paw {
+  font-size: 32rpx;
+  opacity: 0.3;
+}
+
+.page-header {
+  text-align: center;
+  padding: 20rpx 24rpx 30rpx;
+}
+
+.header-icon {
+  font-size: 56rpx;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.header-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.header-subtitle {
+  display: block;
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+/* 表单区域 */
+.form-container {
+  height: calc(100vh - 280rpx);
+}
+
+.form-section {
+  background: #FFFFFF;
+  margin: 0 24rpx 20rpx;
+  padding: 28rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(76, 175, 80, 0.08);
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.label-icon {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.label-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.label-required {
+  color: #FF5722;
+  margin-left: 4rpx;
+}
+
+/* 照片上传 */
+.photo-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.photo-item {
+  position: relative;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.photo-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.photo-delete {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background: rgba(0, 0, 0, 0.5);
+  color: #FFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+}
+
+.photo-add {
+  width: 200rpx;
+  height: 200rpx;
+  background: #F5F9F5;
+  border: 2rpx dashed #C8E6C9;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-icon {
+  font-size: 48rpx;
+  color: #4CAF50;
+}
+
+.add-text {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 8rpx;
+}
+
+.add-count {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+.photo-tip {
+  display: block;
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 16rpx;
+}
+
+/* 救助类型 */
+.type-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.type-tag {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  background: #F5F9F5;
+  border-radius: 40rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s;
+}
+
+.type-tag.active {
+  background: #E8F5E9;
+  border-color: #4CAF50;
+}
+
+.tag-icon {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.tag-text {
+  font-size: 26rpx;
+  color: #333;
+}
+
+/* 紧急程度 */
+.urgency-selector {
+  display: flex;
+  gap: 16rpx;
+}
+
+.urgency-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx 0;
+  background: #F5F9F5;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #666;
+  border: 2rpx solid transparent;
+  transition: all 0.3s;
+}
+
+.urgency-item.active {
+  color: #FFF;
+}
+
+.urgency-item.level-low.active {
+  background: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.urgency-item.level-medium.active {
+  background: #FF9800;
+  border-color: #FF9800;
+}
+
+.urgency-item.level-high.active {
+  background: #F44336;
+  border-color: #F44336;
+}
+
+/* 描述输入 */
+.description-input {
+  width: 100%;
+  min-height: 200rpx;
+  padding: 20rpx;
+  background: #F5F9F5;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.input-placeholder {
+  color: #BBB;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+/* 位置选择 */
+.location-picker {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  background: #F5F9F5;
+  border-radius: 16rpx;
+}
+
+.location-info {
+  flex: 1;
+}
+
+.location-name {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.location-address {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+.location-placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.placeholder-icon {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.placeholder-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.location-arrow {
+  font-size: 32rpx;
+  color: #CCC;
+  margin-left: 12rpx;
+}
+
+.location-tip {
+  font-size: 22rpx;
+  color: #FF9800;
+  margin-top: 12rpx;
+}
+
+/* 联系方式 */
+.contact-input {
+  width: 100%;
+  padding: 20rpx 24rpx;
+  background: #F5F9F5;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.contact-options {
+  margin-top: 16rpx;
+}
+
+.anonymous-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-text {
+  font-size: 24rpx;
+  color: #666;
+  margin-left: 8rpx;
+}
+
+/* 提交按钮 */
+.submit-section {
+  padding: 32rpx 24rpx;
+  text-align: center;
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  width: 100%;
+  padding: 28rpx 0;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: #FFFFFF;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-radius: 48rpx;
+  box-shadow: 0 8rpx 24rpx rgba(76, 175, 80, 0.35);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.btn-icon {
+  font-size: 32rpx;
+}
+
+.btn-text {
+  font-size: 32rpx;
+}
+
+.submit-tip {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 16rpx;
+}
+
+/* 底部留白 */
+.bottom-space {
+  height: 120rpx;
+}
+
+/* 装饰动画 */
+.floating-cats {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.floating-cat {
+  position: absolute;
+  font-size: 48rpx;
+  opacity: 0.1;
+  animation: float 8s ease-in-out infinite;
+}
+
+.cat-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.cat-2 {
+  top: 50%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.cat-3 {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30rpx) rotate(10deg);
+  }
+}

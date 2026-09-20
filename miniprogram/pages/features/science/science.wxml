@@ -1,0 +1,165 @@
+<view class="container">
+  <view class="page-header">
+    <text class="header-title">科学养宠</text>
+    <text class="header-subtitle">用专业知识守护喵星人</text>
+  </view>
+
+  <view class="section-tabs">
+    <view
+      class="tab-item {{currentTab === 0 ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-index="0">
+      医疗常识
+    </view>
+    <view
+      class="tab-item {{currentTab === 1 ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-index="1">
+      应急指南
+    </view>
+    <view
+      class="tab-item {{currentTab === 2 ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-index="2">
+      封窗行动
+    </view>
+  </view>
+
+  <!-- 医疗常识 -->
+  <scroll-view scroll-y class="content-area" wx:if="{{currentTab === 0}}">
+    <view class="medical-section">
+      <view class="section-card">
+        <view class="card-title">
+          <text class="title-icon">💉</text>
+          <text class="title-text">疫苗接种时间表</text>
+        </view>
+        <view class="timeline">
+          <view class="timeline-item" wx:for="{{vaccines}}" wx:key="age">
+            <view class="timeline-dot"></view>
+            <view class="timeline-content">
+              <text class="timeline-age">{{item.age}}</text>
+              <text class="timeline-vaccine">{{item.vaccine}}</text>
+              <text class="timeline-note">{{item.note}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <view class="card-title">
+          <text class="title-icon">🐛</text>
+          <text class="title-text">驱虫计划</text>
+        </view>
+        <view class="deworm-list">
+          <view class="deworm-item" wx:for="{{dewormSchedule}}" wx:key="type">
+            <view class="deworm-type">{{item.type}}</view>
+            <view class="deworm-frequency">{{item.frequency}}</view>
+            <text class="deworm-note">{{item.note}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="section-card tnr-card">
+        <view class="card-title">
+          <text class="title-icon">✂️</text>
+          <text class="title-text">绝育的重要性（TNR理念）</text>
+        </view>
+        <view class="tnr-content">
+          <text class="tnr-subtitle">TNR = Trap（诱捕）- Neuter（绝育）- Return（放归）</text>
+          <view class="benefit-list">
+            <view class="benefit-item" wx:for="{{tnrBenefits}}" wx:key="id">
+              <text class="benefit-icon">{{item.icon}}</text>
+              <text class="benefit-text">{{item.text}}</text>
+            </view>
+          </view>
+          <view class="tnr-highlight">
+            <text class="highlight-text">绝育是对流浪猫最负责任的爱护方式</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 应急指南 -->
+  <scroll-view scroll-y class="content-area" wx:if="{{currentTab === 1}}">
+    <view class="emergency-list">
+      <view
+        class="emergency-card"
+        wx:for="{{emergencies}}"
+        wx:key="id"
+        bindtap="showEmergencyDetail"
+        data-item="{{item}}">
+        <view class="emergency-header">
+          <text class="emergency-icon">{{item.icon}}</text>
+          <view class="emergency-info">
+            <text class="emergency-title">{{item.title}}</text>
+            <view class="urgency-badge level-{{item.urgency}}">
+              {{item.urgencyText}}
+            </view>
+          </view>
+        </view>
+        <text class="emergency-summary">{{item.summary}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 封窗行动 -->
+  <scroll-view scroll-y class="content-area" wx:if="{{currentTab === 2}}">
+    <view class="window-section">
+      <view class="danger-alert">
+        <text class="alert-icon">⚠️</text>
+        <view class="alert-content">
+          <text class="alert-title">高空坠落是家猫的头号杀手</text>
+          <text class="alert-subtitle">即使是一楼也可能导致重伤或死亡</text>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <view class="card-title">
+          <text class="title-icon">📊</text>
+          <text class="title-text">高空坠猫数据</text>
+        </view>
+        <view class="stats-grid">
+          <view class="stat-item" wx:for="{{windowStats}}" wx:key="label">
+            <text class="stat-number">{{item.value}}</text>
+            <text class="stat-label">{{item.label}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <view class="card-title">
+          <text class="title-icon">🔧</text>
+          <text class="title-text">科学封窗标准</text>
+        </view>
+        <view class="window-standards">
+          <view class="standard-item" wx:for="{{windowStandards}}" wx:key="id">
+            <view class="standard-number">{{item.id}}</view>
+            <view class="standard-content">
+              <text class="standard-title">{{item.title}}</text>
+              <text class="standard-desc">{{item.description}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <view class="card-title">
+          <text class="title-icon">❌</text>
+          <text class="title-text">常见误区</text>
+        </view>
+        <view class="myth-list">
+          <view class="myth-item" wx:for="{{windowMyths}}" wx:key="id">
+            <text class="myth-wrong">❌ {{item.wrong}}</text>
+            <text class="myth-right">✅ {{item.right}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="action-card">
+        <text class="action-title">封窗是领养的硬性标准</text>
+        <text class="action-desc">所有领养人必须在领养前完成科学封窗</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,398 @@
+/* TNR记录页面 */
+.container {
+  min-height: 100vh;
+  background: #F5F9F5;
+  padding-bottom: 140rpx;
+}
+
+/* 进度条 */
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32rpx 48rpx;
+  background: #FFFFFF;
+  margin-bottom: 24rpx;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.4;
+}
+
+.progress-step.active {
+  opacity: 1;
+}
+
+.progress-step.done {
+  opacity: 1;
+}
+
+.step-dot {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: #E8F5E9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #4CAF50;
+  margin-bottom: 8rpx;
+}
+
+.progress-step.active .step-dot {
+  background: #4CAF50;
+  color: #FFFFFF;
+}
+
+.progress-step.done .step-dot {
+  background: #4CAF50;
+  color: #FFFFFF;
+}
+
+.step-label {
+  font-size: 22rpx;
+  color: #666;
+}
+
+.progress-line {
+  width: 60rpx;
+  height: 4rpx;
+  background: #E8F5E9;
+  margin: 0 8rpx;
+  margin-bottom: 32rpx;
+}
+
+.progress-line.done {
+  background: #4CAF50;
+}
+
+/* 表单区域 */
+.form-section {
+  padding: 0 24rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.form-item {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.label-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.label-required {
+  color: #FF5252;
+  font-size: 28rpx;
+  margin-left: 4rpx;
+}
+
+/* 照片上传 */
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.photo-item {
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.photo-preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+  background: #E8F5E9;
+}
+
+.photo-delete {
+  position: absolute;
+  top: -12rpx;
+  right: -12rpx;
+  width: 36rpx;
+  height: 36rpx;
+  background: #FF5252;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.photo-add {
+  width: 160rpx;
+  height: 160rpx;
+  border: 2rpx dashed #4CAF50;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.add-icon {
+  font-size: 48rpx;
+  color: #4CAF50;
+}
+
+/* 输入框 */
+.form-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  background: #F5F9F5;
+  border-radius: 12rpx;
+}
+
+.form-textarea {
+  width: 100%;
+  min-height: 120rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  background: #F5F9F5;
+  border-radius: 12rpx;
+}
+
+/* 选择器 */
+.form-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80rpx;
+  padding: 0 20rpx;
+  background: #F5F9F5;
+  border-radius: 12rpx;
+}
+
+.picker-value {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.picker-value.placeholder {
+  color: #999;
+}
+
+.picker-arrow {
+  font-size: 32rpx;
+  color: #999;
+}
+
+/* 性别选择 */
+.gender-options {
+  display: flex;
+  gap: 16rpx;
+}
+
+.gender-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background: #F5F9F5;
+  border-radius: 16rpx;
+  border: 2rpx solid transparent;
+}
+
+.gender-option.active {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: #4CAF50;
+}
+
+.gender-icon {
+  font-size: 36rpx;
+  margin-bottom: 8rpx;
+}
+
+.gender-text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 手术类型 */
+.type-options {
+  display: flex;
+  gap: 16rpx;
+}
+
+.type-option {
+  flex: 1;
+  padding: 20rpx;
+  text-align: center;
+  background: #F5F9F5;
+  border-radius: 12rpx;
+  border: 2rpx solid transparent;
+}
+
+.type-option.active {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: #4CAF50;
+}
+
+.type-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 耳标选择 */
+.earmark-options {
+  display: flex;
+  gap: 12rpx;
+}
+
+.earmark-option {
+  flex: 1;
+  padding: 16rpx;
+  text-align: center;
+  background: #F5F9F5;
+  border-radius: 12rpx;
+  border: 2rpx solid transparent;
+}
+
+.earmark-option.active {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: #4CAF50;
+}
+
+.earmark-text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 疫苗选择 */
+.vaccine-options {
+  display: flex;
+  gap: 16rpx;
+}
+
+.vaccine-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 16rpx 20rpx;
+  background: #F5F9F5;
+  border-radius: 12rpx;
+  border: 2rpx solid transparent;
+}
+
+.vaccine-option.active {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: #4CAF50;
+}
+
+.vaccine-icon {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.vaccine-text {
+  flex: 1;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.vaccine-check {
+  font-size: 28rpx;
+  color: #4CAF50;
+  font-weight: 700;
+}
+
+/* 放归状态 */
+.status-options {
+  display: flex;
+  gap: 16rpx;
+}
+
+.status-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background: #F5F9F5;
+  border-radius: 16rpx;
+  border: 2rpx solid transparent;
+}
+
+.status-option.active {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: #4CAF50;
+}
+
+.status-icon {
+  font-size: 36rpx;
+  margin-bottom: 8rpx;
+}
+
+.status-text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 底部按钮 */
+.btn-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 16rpx;
+  padding: 24rpx;
+  background: #FFFFFF;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary {
+  flex: 1;
+  height: 88rpx;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  border: none;
+}
+
+.btn-primary.disabled {
+  opacity: 0.5;
+}
+
+.btn-secondary {
+  width: 200rpx;
+  height: 88rpx;
+  background: #F5F9F5;
+  border-radius: 44rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #666;
+  border: none;
+}

@@ -1,0 +1,114 @@
+<view class="dialog-mask" wx:if="{{show}}" bindtap="onMaskTap" catchtouchmove="preventTouchMove">
+  <view class="dialog-container" catchtap="stopPropagation">
+    <!-- 头部 -->
+    <view class="dialog-header">
+      <text class="dialog-title">提交举报</text>
+      <view class="close-btn" bindtap="onClose">
+        <text class="close-icon">✕</text>
+      </view>
+    </view>
+
+    <!-- 内容区域 - 可滚动 -->
+    <scroll-view class="dialog-content" scroll-y>
+      <!-- 举报模板提示 -->
+      <view class="template-hint">
+        <text class="hint-icon">📝</text>
+        <text class="hint-text">请按照以下格式详细描述</text>
+      </view>
+
+      <!-- 举报表单 -->
+      <view class="form-section">
+        <view class="form-item">
+          <text class="form-label">举报类型 <text class="required">*</text></text>
+          <view class="radio-group">
+            <view
+              class="radio-item {{reportType === item.value ? 'active' : ''}}"
+              wx:for="{{types}}"
+              wx:key="value"
+              bindtap="selectType"
+              data-value="{{item.value}}">
+              <text class="radio-icon">{{reportType === item.value ? '◉' : '◯'}}</text>
+              <text class="radio-label">{{item.label}}</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="form-item">
+          <text class="form-label">时间地点 <text class="required">*</text></text>
+          <input
+            class="form-input"
+            placeholder="例：2024年1月15日 14:30，朝阳公园北门"
+            value="{{location}}"
+            bindinput="onLocationInput" />
+        </view>
+
+        <view class="form-item">
+          <text class="form-label">施虐者特征 <text class="required">*</text></text>
+          <input
+            class="form-input"
+            placeholder="例：男性，约30岁，穿黑色外套"
+            value="{{perpetrator}}"
+            bindinput="onPerpetratorInput" />
+        </view>
+
+        <view class="form-item">
+          <text class="form-label">详细描述 <text class="required">*</text></text>
+          <textarea
+            class="form-textarea"
+            placeholder="请详细描述虐待情况，包括：&#10;1. 具体虐待方式&#10;2. 猫咪受伤状态&#10;3. 其他相关细节"
+            value="{{description}}"
+            bindinput="onDescriptionInput"
+            maxlength="500"
+            show-confirm-bar="{{false}}" />
+          <text class="char-count">{{description.length}}/500</text>
+        </view>
+
+        <view class="form-item">
+          <text class="form-label">证据材料</text>
+          <view class="upload-area" bindtap="onUpload">
+            <text class="upload-icon">📷</text>
+            <text class="upload-text">上传照片/视频</text>
+            <text class="upload-hint">最多9个文件</text>
+          </view>
+          <view class="file-list" wx:if="{{files.length > 0}}">
+            <view class="file-item" wx:for="{{files}}" wx:key="*this">
+              <text class="file-icon">✓</text>
+              <text class="file-name">文件{{index + 1}}</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="form-item">
+          <text class="form-label">您的联系方式 <text class="required">*</text></text>
+          <input
+            class="form-input"
+            type="number"
+            placeholder="请输入手机号，便于后续联系"
+            value="{{contact}}"
+            bindinput="onContactInput" />
+        </view>
+      </view>
+
+      <!-- 温馨提示 -->
+      <view class="warning-box">
+        <text class="warning-icon">⚠️</text>
+        <view class="warning-content">
+          <text class="warning-title">重要提示</text>
+          <text class="warning-text">1. 请确保信息真实准确</text>
+          <text class="warning-text">2. 我们会严格保密您的信息</text>
+          <text class="warning-text">3. 建议同时拨打110报警</text>
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- 底部按钮 -->
+    <view class="dialog-footer">
+      <view class="footer-btn cancel" bindtap="onClose">
+        <text class="btn-text">取消</text>
+      </view>
+      <view class="footer-btn submit" bindtap="onSubmit">
+        <text class="btn-text">提交举报</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,107 @@
+<!--救助计划页面-->
+<view class="page">
+  <!--顶部统计-->
+  <view class="stats">
+    <view class="stat">
+      <text class="num">{{todoCount}}</text>
+      <text class="txt">待办</text>
+    </view>
+    <view class="line"></view>
+    <view class="stat">
+      <text class="num">{{doingCount}}</text>
+      <text class="txt">进行中</text>
+    </view>
+    <view class="line"></view>
+    <view class="stat">
+      <text class="num">{{doneCount}}</text>
+      <text class="txt">已完成</text>
+    </view>
+  </view>
+
+  <!--添加按钮-->
+  <view class="add" bindtap="addPlan">+ 添加救助计划</view>
+
+  <!--筛选-->
+  <view class="filters">
+    <view class="filter {{currentFilter==='all'?'on':''}}" bindtap="setFilter" data-f="all">全部</view>
+    <view class="filter {{currentFilter==='todo'?'on':''}}" bindtap="setFilter" data-f="todo">待办</view>
+    <view class="filter {{currentFilter==='doing'?'on':''}}" bindtap="setFilter" data-f="doing">进行中</view>
+    <view class="filter {{currentFilter==='done'?'on':''}}" bindtap="setFilter" data-f="done">已完成</view>
+  </view>
+
+  <!--列表-->
+  <view class="items" wx:if="{{list.length>0}}">
+    <view class="item {{item.status}}" wx:for="{{list}}" wx:key="id" bindtap="editPlan" data-item="{{item}}">
+      <view class="check" catchtap="toggleStatus" data-id="{{item.id}}">
+        <text wx:if="{{item.status==='done'}}">✓</text>
+      </view>
+      <view class="info">
+        <view class="row1">
+          <text class="tag">{{item.typeText}}</text>
+          <text class="name">{{item.title}}</text>
+        </view>
+        <text class="desc" wx:if="{{item.desc}}">{{item.desc}}</text>
+        <view class="row2" wx:if="{{item.location||item.deadline}}">
+          <text wx:if="{{item.location}}">📍{{item.location}}</text>
+          <text wx:if="{{item.deadline}}">📅{{item.deadline}}</text>
+        </view>
+      </view>
+      <text class="go">›</text>
+    </view>
+  </view>
+
+  <!--空状态-->
+  <view class="empty" wx:if="{{list.length===0}}">
+    <text class="icon">📋</text>
+    <text class="msg">暂无计划</text>
+    <text class="tip">点击上方添加</text>
+  </view>
+</view>
+
+<!--弹窗-->
+<view class="mask" wx:if="{{showModal}}" bindtap="closeModal"></view>
+<view class="modal" wx:if="{{showModal}}">
+  <view class="mhead">
+    <text class="mtitle">{{isEdit?'编辑计划':'添加计划'}}</text>
+    <text class="mclose" bindtap="closeModal">×</text>
+  </view>
+  <view class="mbody">
+    <view class="row">
+      <text class="label">类型</text>
+      <view class="types">
+        <text class="tp {{form.type==='feed'?'tpon':''}}" bindtap="setType" data-t="feed">🍽️投喂</text>
+        <text class="tp {{form.type==='tnr'?'tpon':''}}" bindtap="setType" data-t="tnr">🏥TNR</text>
+        <text class="tp {{form.type==='rescue'?'tpon':''}}" bindtap="setType" data-t="rescue">🚨救助</text>
+        <text class="tp {{form.type==='adopt'?'tpon':''}}" bindtap="setType" data-t="adopt">🏡领养</text>
+        <text class="tp {{form.type==='other'?'tpon':''}}" bindtap="setType" data-t="other">📝其他</text>
+      </view>
+    </view>
+    <view class="row">
+      <text class="label">标题</text>
+      <input class="inp" placeholder="如：每周三投喂小橘" value="{{form.title}}" bindinput="setTitle"/>
+    </view>
+    <view class="row">
+      <text class="label">描述</text>
+      <textarea class="ta" placeholder="具体内容..." value="{{form.desc}}" bindinput="setDesc"/>
+    </view>
+    <view class="row">
+      <text class="label">地点</text>
+      <view class="pick" bindtap="pickLoc">
+        <text>{{form.location||'选择地点（可选）'}}</text>
+      </view>
+    </view>
+    <view class="row">
+      <text class="label">截止</text>
+      <picker mode="date" value="{{form.deadline}}" start="{{today}}" bindchange="setDate">
+        <view class="pick">
+          <text>{{form.deadline||'选择日期（可选）'}}</text>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="mfoot">
+    <text class="btn del" wx:if="{{isEdit}}" bindtap="delPlan">删除</text>
+    <text class="btn cancel" bindtap="closeModal">取消</text>
+    <text class="btn save" bindtap="savePlan">保存</text>
+  </view>
+</view>

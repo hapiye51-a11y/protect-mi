@@ -1,0 +1,56 @@
+<view class="page">
+  <!-- 问题类型 -->
+  <view class="section">
+    <text class="label">问题类型</text>
+    <view class="types">
+      <view class="type {{type === 'feed' ? 'active' : ''}}" bindtap="setType" data-type="feed">
+        <text>🍽️ 喂养</text>
+      </view>
+      <view class="type {{type === 'medical' ? 'active' : ''}}" bindtap="setType" data-type="medical">
+        <text>🏥 医疗</text>
+      </view>
+      <view class="type {{type === 'behavior' ? 'active' : ''}}" bindtap="setType" data-type="behavior">
+        <text>🐱 行为</text>
+      </view>
+      <view class="type {{type === 'rescue' ? 'active' : ''}}" bindtap="setType" data-type="rescue">
+        <text>🚨 救助</text>
+      </view>
+      <view class="type {{type === 'other' ? 'active' : ''}}" bindtap="setType" data-type="other">
+        <text>📝 其他</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 问题标题 -->
+  <view class="section">
+    <text class="label">问题标题</text>
+    <input class="input" placeholder="一句话描述你的问题" value="{{title}}" bindinput="setTitle" maxlength="50" />
+    <text class="count">{{title.length}}/50</text>
+  </view>
+
+  <!-- 详细描述 -->
+  <view class="section">
+    <text class="label">详细描述</text>
+    <textarea class="textarea" placeholder="请详细描述你的问题，包括具体情况、已尝试的方法等..." value="{{content}}" bindinput="setContent" maxlength="500" />
+    <text class="count">{{content.length}}/500</text>
+  </view>
+
+  <!-- 添加图片 -->
+  <view class="section">
+    <text class="label">添加图片（选填）</text>
+    <view class="photos">
+      <view class="photo" wx:for="{{photos}}" wx:key="*this">
+        <image src="{{item}}" mode="aspectFill" />
+        <text class="del" bindtap="delPhoto" data-index="{{index}}">×</text>
+      </view>
+      <view class="add-photo" wx:if="{{photos.length < 3}}" bindtap="addPhoto">
+        <text>+</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="btn-area">
+    <button class="btn" bindtap="submit">发布问题</button>
+  </view>
+</view>

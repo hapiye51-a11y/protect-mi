@@ -1,0 +1,131 @@
+[
+  {
+    "name": "小橘",
+    "gender": "male",
+    "breed": "橘猫",
+    "age": "2岁",
+    "color": "橘色",
+    "weight": "4.5kg",
+    "status": "available",
+    "isNeutered": true,
+    "location": "上海市浦东新区",
+    "description": "性格温顺，喜欢撒娇，已经完成绝育和疫苗。适合有养猫经验的家庭。",
+    "rescueStory": "2025年冬天在小区发现，当时瘦骨嶙峋，经过半年的精心照顾，现在已经成为一只健康可爱的大胖橘。",
+    "rescueDate": "2025-11-15",
+    "avatar": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400",
+      "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400"
+    ],
+    "personality": ["温顺", "爱撒娇", "吃货"],
+    "adoptionRequirements": [
+      "有稳定住所，接受回访",
+      "封窗封阳台，防止走失",
+      "科学喂养，定期体检"
+    ],
+    "vaccineStatus": "已完成",
+    "dewormStatus": "1月内已驱虫",
+    "healthCondition": "健康",
+    "createTime": {"$date": "2026-03-01T00:00:00.000Z"}
+  },
+  {
+    "name": "雪球",
+    "gender": "female",
+    "breed": "英短",
+    "age": "1岁",
+    "color": "白色",
+    "weight": "3.2kg",
+    "status": "available",
+    "isNeutered": true,
+    "location": "上海市徐汇区",
+    "description": "纯白色小公主，眼睛像蓝宝石一样漂亮。性格独立但亲人，喜欢安静的环境。",
+    "rescueStory": "从非法繁殖场解救出来，经过一段时间的康复训练，现在已经可以接受领养了。",
+    "rescueDate": "2026-01-20",
+    "avatar": "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400"
+    ],
+    "personality": ["独立", "安静", "优雅"],
+    "adoptionRequirements": [
+      "有养猫经验优先",
+      "安静的家庭环境",
+      "接受定期回访"
+    ],
+    "vaccineStatus": "已完成",
+    "dewormStatus": "已驱虫",
+    "healthCondition": "健康",
+    "createTime": {"$date": "2026-02-15T00:00:00.000Z"}
+  },
+  {
+    "name": "小黑",
+    "gender": "male",
+    "breed": "中华田园猫",
+    "age": "3岁",
+    "color": "黑色",
+    "weight": "5kg",
+    "status": "treatment",
+    "isNeutered": true,
+    "location": "上海市静安区",
+    "description": "正在接受皮肤治疗中，预计两周后康复。性格活泼，喜欢玩逗猫棒。",
+    "rescueStory": "在废弃工厂发现，当时身上有严重的皮肤病，经过一个月的治疗已经好转很多。",
+    "rescueDate": "2026-02-28",
+    "avatar": "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400",
+    "images": [],
+    "personality": ["活泼", "好奇", "亲人"],
+    "vaccineStatus": "治疗中暂缓",
+    "dewormStatus": "已驱虫",
+    "healthCondition": "皮肤病治疗中",
+    "createTime": {"$date": "2026-03-10T00:00:00.000Z"}
+  },
+  {
+    "name": "花花",
+    "gender": "female",
+    "breed": "三花猫",
+    "age": "4岁",
+    "color": "三花",
+    "weight": "3.8kg",
+    "status": "adopted",
+    "isNeutered": true,
+    "location": "上海市长宁区",
+    "description": "已经找到幸福的家啦！领养人是一位爱猫的小姐姐，经常发来花花的生活近况。",
+    "rescueStory": "曾经是一只流浪的猫妈妈，成功救助后完成了绝育，现在已经被领养。",
+    "rescueDate": "2024-06-10",
+    "avatar": "https://images.unsplash.com/photo-1573865526739-10c1d3a7c127?w=400",
+    "images": [],
+    "personality": ["温柔", "乖巧"],
+    "vaccineStatus": "已完成",
+    "dewormStatus": "已驱虫",
+    "healthCondition": "健康",
+    "createTime": {"$date": "2024-06-15T00:00:00.000Z"}
+  },
+  {
+    "name": "大橘为重",
+    "gender": "male",
+    "breed": "橘猫",
+    "age": "5岁",
+    "color": "橘白相间",
+    "weight": "6.5kg",
+    "status": "available",
+    "isNeutered": true,
+    "location": "上海市普陀区",
+    "description": "名副其实的大胖橘！性格超级好，随便撸都不生气。适合喜欢安静陪伴的主人。",
+    "rescueStory": "小区里的老居民了，因为原主人搬家无法带走，我们接手后帮它找到了领养机会。",
+    "rescueDate": "2026-02-01",
+    "avatar": "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400",
+      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400",
+      "https://images.unsplash.com/photo-1573865526739-10c1d3a7c127?w=400"
+    ],
+    "personality": ["温顺", "慵懒", "不挑食"],
+    "adoptionRequirements": [
+      "能接受它的体重（正在减肥中）",
+      "定期称重，控制饮食",
+      "封窗封阳台"
+    ],
+    "vaccineStatus": "已完成",
+    "dewormStatus": "已驱虫",
+    "healthCondition": "健康（偏胖）",
+    "createTime": {"$date": "2026-02-20T00:00:00.000Z"}
+  }
+]

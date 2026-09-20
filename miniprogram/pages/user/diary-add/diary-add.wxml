@@ -1,0 +1,66 @@
+<view class="container">
+  <view class="form-section">
+    <!-- 标题输入 -->
+    <view class="form-group">
+      <input class="title-input" placeholder="给这篇日志起个标题" value="{{form.title}}" bindinput="onTitleInput" maxlength="50" />
+    </view>
+
+    <!-- 内容输入 -->
+    <view class="form-group">
+      <textarea class="content-input" placeholder="记录猫咪的成长点滴..." value="{{form.content}}" bindinput="onContentInput" maxlength="2000" />
+      <text class="char-count">{{form.content.length}}/2000</text>
+    </view>
+
+    <!-- 图片上传 -->
+    <view class="form-group">
+      <view class="image-grid">
+        <view class="image-item" wx:for="{{form.images}}" wx:key="*this">
+          <image class="preview-image" src="{{item}}" mode="aspectFill" />
+          <view class="delete-btn" catchtap="onDeleteImage" data-index="{{index}}">
+            <text class="delete-icon">×</text>
+          </view>
+        </view>
+        
+        <view class="image-item add-btn" bindtap="onChooseImage" wx:if="{{form.images.length < 9}}">
+          <text class="add-icon">+</text>
+          <text class="add-text">添加照片</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 标签选择 -->
+    <view class="form-group">
+      <text class="group-title">标签</text>
+      <view class="tag-options">
+        <view class="tag-option {{item.selected ? 'selected' : ''}}" 
+          wx:for="{{tagOptions}}" 
+          wx:key="name"
+          bindtap="toggleTag"
+          data-index="{{index}}">
+          <text class="tag-emoji">{{item.emoji}}</text>
+          <text class="tag-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 心情选择 -->
+    <view class="form-group">
+      <text class="group-title">今天的心情</text>
+      <view class="mood-options">
+        <view class="mood-option {{form.mood === item.value ? 'selected' : ''}}"
+          wx:for="{{moodOptions}}"
+          wx:key="value"
+          bindtap="selectMood"
+          data-mood="{{item.value}}">
+          <text class="mood-emoji">{{item.emoji}}</text>
+          <text class="mood-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 发布按钮 -->
+  <view class="save-section">
+    <button class="save-btn" bindtap="onPublish" loading="{{publishing}}">发布日志</button>
+  </view>
+</view>

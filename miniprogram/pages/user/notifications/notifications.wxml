@@ -1,0 +1,54 @@
+<view class="page">
+  <!-- 标签栏 -->
+  <view class="tabs">
+    <view class="tab {{activeTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">
+      全部
+    </view>
+    <view class="tab {{activeTab === 'interact' ? 'active' : ''}}" bindtap="switchTab" data-tab="interact">
+      互动
+    </view>
+    <view class="tab {{activeTab === 'system' ? 'active' : ''}}" bindtap="switchTab" data-tab="system">
+      系统
+    </view>
+  </view>
+
+  <!-- 操作栏 -->
+  <view class="actions" wx:if="{{notifications.length > 0}}">
+    <text class="action-btn" bindtap="markAllRead">全部已读</text>
+    <text class="divider">|</text>
+    <text class="action-btn" bindtap="clearAll">清空</text>
+  </view>
+
+  <!-- 通知列表 -->
+  <view class="list" wx:if="{{!loading && notifications.length > 0}}">
+    <view 
+      class="item {{item.isRead ? '' : 'unread'}}" 
+      wx:for="{{notifications}}" 
+      wx:key="id"
+      bindtap="tapNotification"
+      data-id="{{item.id}}"
+    >
+      <view class="avatar">
+        <image src="{{item.avatar}}" mode="aspectFill" />
+        <view class="type-icon type-{{item.type}}">{{item.type === 'like' ? '❤️' : item.type === 'comment' ? '💬' : item.type === 'follow' ? '👤' : item.type === 'adopt' ? '🏠' : '📢'}}</view>
+      </view>
+      <view class="content">
+        <view class="title">{{item.title}}</view>
+        <view class="desc">{{item.content}}</view>
+        <view class="time">{{item.time}}</view>
+      </view>
+      <view class="unread-dot" wx:if="{{!item.isRead}}"></view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{!loading && notifications.length === 0}}">
+    <text class="empty-icon">🔔</text>
+    <text class="empty-text">暂无消息通知</text>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>

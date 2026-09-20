@@ -1,0 +1,77 @@
+<view class="container">
+  <!-- 日记头部 -->
+  <view class="diary-header">
+    <view class="header-info">
+      <text class="cat-name">{{catName}}</text>
+      <text class="diary-title">成长记录</text>
+    </view>
+    <view class="diary-stats">
+      <text class="stat-item">共 {{totalCount}} 篇日志</text>
+    </view>
+  </view>
+
+  <!-- 日志列表 -->
+  <view class="diary-list">
+    <view class="diary-item" wx:for="{{diaries}}" wx:key="_id" bindtap="viewDiary" bindlongpress="onLongPressDiary" data-id="{{item._id}}">
+      <!-- 日期标签 -->
+      <view class="date-label">
+        <text class="date-day">{{item.day}}</text>
+        <text class="date-month">{{item.month}}</text>
+      </view>
+
+      <!-- 日志内容 -->
+      <view class="diary-content">
+        <view class="diary-card">
+          <text class="diary-title-text">{{item.title}}</text>
+          <text class="diary-text">{{item.content}}</text>
+          
+          <!-- 图片预览 -->
+          <view class="diary-images" wx:if="{{item.images && item.images.length}}">
+            <image 
+              class="diary-image" 
+              wx:for="{{item.images}}" 
+              wx:for-item="img"
+              wx:key="*this"
+              src="{{img}}" 
+              mode="aspectFill"
+              catchtap="previewImage"
+              data-url="{{img}}"
+              data-urls="{{item.images}}" />
+          </view>
+
+          <!-- 标签 -->
+          <view class="diary-tags" wx:if="{{item.tags && item.tags.length}}">
+            <text class="diary-tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+          </view>
+
+          <!-- 互动数据 -->
+          <view class="diary-footer">
+            <view class="footer-stat">
+              <text class="stat-icon">👁️</text>
+              <text class="stat-num">{{item.views || 0}}</text>
+            </view>
+            <view class="footer-stat">
+              <text class="stat-icon">❤️</text>
+              <text class="stat-num">{{item.likes || 0}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{diaries.length === 0}}">
+      <text class="empty-icon">📝</text>
+      <text class="empty-text">暂无成长记录</text>
+      <text class="empty-hint">{{isOwner ? '记录猫咪的成长点滴' : '等待救助人更新'}}</text>
+      <button class="add-diary-btn" bindtap="addDiary" wx:if="{{isOwner}}">写第一篇日志</button>
+    </view>
+  </view>
+
+  <!-- 添加按钮 - 只有创建者可见 -->
+  <view class="fab-button" bindtap="addDiary" wx:if="{{diaries.length > 0 && isOwner}}">
+    <text class="fab-icon">+</text>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>

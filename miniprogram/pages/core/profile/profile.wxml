@@ -1,0 +1,68 @@
+<view class="page">
+  <view class="header">
+    <view class="avatar" bindtap="goLogin">
+      <image wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}" mode="aspectFill" />
+      <text wx:else>🐱</text>
+    </view>
+    <view class="info">
+      <text class="name">{{userInfo.nickName || '点击登录'}}</text>
+    </view>
+    <view class="btn" bindtap="goLogin">
+      <text>{{isLogin ? '编辑' : '登录'}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="title">我的服务</text>
+    <view class="list">
+      <view class="item" bindtap="goPage" data-url="/pages/user/my-posts/my-posts">
+        <text class="icon">🐾</text>
+        <text class="txt">我的发布</text>
+        <text class="arrow">›</text>
+      </view>
+      <view class="item" bindtap="goPage" data-url="/pages/core/cat-profiles/cat-profiles">
+        <text class="icon">🐱</text>
+        <text class="txt">我的关注</text>
+        <text class="arrow">›</text>
+      </view>
+      <view class="item" bindtap="goPage" data-url="/pages/user/my-moments/my-moments">
+        <text class="icon">📸</text>
+        <text class="txt">我的动态</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="title">设置</text>
+    <view class="list">
+      <view class="item" wx:if="{{isAdmin}}" bindtap="goPage" data-url="/pages/admin/review/review">
+        <text class="icon">📋</text>
+        <text class="txt">审核管理</text>
+        <text class="arrow">›</text>
+      </view>
+      <view class="item" bindtap="goPage" data-url="/pages/user/notifications/notifications">
+        <text class="icon">🔔</text>
+        <text class="txt">消息通知</text>
+        <text class="arrow">›</text>
+      </view>
+      <view class="item" bindtap="goPage" data-url="/pages/user/privacy-settings/privacy-settings">
+        <text class="icon">🔒</text>
+        <text class="txt">隐私设置</text>
+        <text class="arrow">›</text>
+      </view>
+      <view class="item" bindtap="goPage" data-url="/pages/user/about/about">
+        <text class="icon">ℹ️</text>
+        <text class="txt">关于我们</text>
+        <text class="arrow">›</text>
+      </view>
+      <view class="item logout" wx:if="{{isLogin}}" bindtap="logout">
+        <text class="icon">🚪</text>
+        <text class="txt">退出登录</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<custom-tabbar currentPath="pages/core/profile/profile" />

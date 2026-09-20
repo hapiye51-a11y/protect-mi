@@ -1,0 +1,142 @@
+.page {
+  min-height: 100vh;
+  background: #F5F9F5;
+  padding-bottom: 60rpx;
+}
+
+/* Logo区域 */
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0 40rpx;
+  background: linear-gradient(180deg, #E8F5E9 0%, #F5F9F5 100%);
+}
+
+.logo {
+  width: 140rpx;
+  height: 140rpx;
+  background: #fff;
+  border-radius: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72rpx;
+  box-shadow: 0 4rpx 20rpx rgba(76, 175, 80, 0.2);
+  margin-bottom: 20rpx;
+}
+
+.app-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.slogan {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.version {
+  font-size: 24rpx;
+  color: #999;
+  padding: 8rpx 20rpx;
+  background: #fff;
+  border-radius: 20rpx;
+}
+
+/* 简介 */
+.intro {
+  background: #fff;
+  padding: 32rpx;
+  margin: 24rpx;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* 通用section */
+.section {
+  margin-top: 24rpx;
+}
+
+.section-title {
+  display: block;
+  padding: 24rpx 32rpx 16rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.list {
+  background: #fff;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 32rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item.clickable:active {
+  background: #f9f9f9;
+}
+
+.icon {
+  font-size: 40rpx;
+  margin-right: 24rpx;
+}
+
+.content {
+  flex: 1;
+}
+
+.content .label {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 4rpx;
+}
+
+.content .value {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.copy-btn {
+  font-size: 24rpx;
+  color: #4CAF50;
+  padding: 8rpx 20rpx;
+  border: 1rpx solid #4CAF50;
+  border-radius: 8rpx;
+}
+
+.item .label {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.arrow {
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+/* 版权 */
+.copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0 20rpx;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1.8;
+}

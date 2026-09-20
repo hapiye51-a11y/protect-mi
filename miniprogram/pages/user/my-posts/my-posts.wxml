@@ -1,0 +1,78 @@
+<view class="container">
+  <!-- 自定义导航栏 -->
+  <view class="custom-navbar">
+    <view class="navbar-back" bindtap="goBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <view class="navbar-title">我的发布</view>
+  </view>
+
+  <!-- 顶部统计卡片 -->
+  <view class="stats-card">
+    <view class="stat-item" bindtap="filterPending">
+      <text class="stat-number">{{pendingCount}}</text>
+      <text class="stat-label">待发布</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="filterPublished">
+      <text class="stat-number">{{publishedCount}}</text>
+      <text class="stat-label">已发布</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-number">{{reviewingCount}}</text>
+      <text class="stat-label">审核中</text>
+    </view>
+  </view>
+
+  <!-- 发布列表 -->
+  <view class="posts-list" wx:if="{{posts.length > 0}}">
+    <view class="post-card" wx:for="{{posts}}" wx:key="_id">
+      <!-- 右上角操作按钮 -->
+      <view class="post-actions-top">
+        <view class="action-icon" catchtap="onEdit" data-id="{{item._id}}">
+          <text>✏️</text>
+        </view>
+        <view class="action-icon" catchtap="onDelete" data-id="{{item._id}}">
+          <text>🗑️</text>
+        </view>
+      </view>
+      <!-- 左侧图片 -->
+      <view class="post-image-container">
+        <image class="post-image" src="{{item.photos[0]}}" mode="aspectFill" />
+        <view class="status-badge status-{{item.status}}">
+          <text>{{item.statusText}}</text>
+        </view>
+      </view>
+      <!-- 右侧信息 -->
+      <view class="post-info">
+        <view class="post-header">
+          <text class="post-type">{{item.typeText}}</text>
+          <text class="post-time">{{item.reportTime}}</text>
+        </view>
+        <text class="post-title">{{item.description}}</text>
+        <view class="post-meta">
+          <text class="meta-item">📍 {{item.address}}</text>
+          <view class="meta-item" wx:if="{{item.riskLevel}}">
+            <text class="risk-level risk-{{item.riskLevel}}">{{item.riskLevelText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📝</text>
+    <text class="empty-text">还没有发布记录</text>
+    <text class="empty-hint">快去发布救助信息或上报风险区域吧</text>
+    <view class="empty-actions">
+      <view class="action-button" bindtap="goPublish">
+        <text>发布救助</text>
+      </view>
+      <view class="action-button secondary" bindtap="goReport">
+        <text>上报风险</text>
+      </view>
+    </view>
+  </view>
+</view>

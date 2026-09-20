@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "科学养宠",
+  "navigationBarBackgroundColor": "#4CAF50",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#F5F9F5",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}

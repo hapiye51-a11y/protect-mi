@@ -1,0 +1,147 @@
+<view class="container">
+  <view class="form-section">
+    <!-- 记录类型标题 -->
+    <view class="type-header">
+      <text class="type-icon">{{typeInfo.icon}}</text>
+      <text class="type-title">{{typeInfo.title}}</text>
+    </view>
+
+    <!-- 基本信息 -->
+    <view class="form-group">
+      <text class="group-title">基本信息</text>
+      
+      <view class="form-item">
+        <text class="item-label">日期</text>
+        <picker mode="date" value="{{form.date}}" bindchange="onDateChange">
+          <view class="item-picker">
+            <text class="picker-text">{{form.date || '请选择日期'}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 疫苗记录 -->
+    <view class="form-group" wx:if="{{type === 'vaccine'}}">
+      <text class="group-title">疫苗信息</text>
+      
+      <view class="form-item">
+        <text class="item-label">疫苗类型</text>
+        <picker mode="selector" range="{{vaccineTypes}}" value="{{vaccineIndex}}" bindchange="onVaccineTypeChange">
+          <view class="item-picker">
+            <text class="picker-text">{{vaccineTypes[vaccineIndex]}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">疫苗名称</text>
+        <input class="item-input" placeholder="如：妙三多、狂犬疫苗" value="{{form.vaccineName}}" data-field="vaccineName" bindinput="onInputChange" />
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">接种医院</text>
+        <input class="item-input" placeholder="请输入医院名称" value="{{form.hospital}}" data-field="hospital" bindinput="onInputChange" />
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">下次接种日期</text>
+        <picker mode="date" value="{{form.nextDate}}" bindchange="onNextDateChange">
+          <view class="item-picker">
+            <text class="picker-text">{{form.nextDate || '请选择日期'}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 驱虫记录 -->
+    <view class="form-group" wx:if="{{type === 'deworm'}}">
+      <text class="group-title">驱虫信息</text>
+      
+      <view class="form-item">
+        <text class="item-label">驱虫类型</text>
+        <picker mode="selector" range="{{dewormTypes}}" value="{{dewormIndex}}" bindchange="onDewormTypeChange">
+          <view class="item-picker">
+            <text class="picker-text">{{dewormTypes[dewormIndex]}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">药品品牌</text>
+        <input class="item-input" placeholder="如：大宠爱、博来恩" value="{{form.brand}}" data-field="brand" bindinput="onInputChange" />
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">下次驱虫日期</text>
+        <picker mode="date" value="{{form.nextDate}}" bindchange="onNextDateChange">
+          <view class="item-picker">
+            <text class="picker-text">{{form.nextDate || '请选择日期'}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 就诊记录 -->
+    <view class="form-group" wx:if="{{type === 'treatment'}}">
+      <text class="group-title">就诊信息</text>
+      
+      <view class="form-item">
+        <text class="item-label">就诊医院</text>
+        <input class="item-input" placeholder="请输入医院名称" value="{{form.hospital}}" data-field="hospital" bindinput="onInputChange" />
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">诊断结果</text>
+        <input class="item-input" placeholder="请输入诊断结果" value="{{form.diagnosis}}" data-field="diagnosis" bindinput="onInputChange" />
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">治疗方案</text>
+        <textarea class="item-textarea" placeholder="请描述治疗方案..." value="{{form.treatment}}" data-field="treatment" bindinput="onInputChange" />
+      </view>
+
+      <view class="form-item">
+        <text class="item-label">费用（元）</text>
+        <input class="item-input" type="digit" placeholder="请输入费用" value="{{form.cost}}" data-field="cost" bindinput="onInputChange" />
+      </view>
+    </view>
+
+    <!-- 备注 -->
+    <view class="form-group">
+      <text class="group-title">备注</text>
+      
+      <view class="form-item full">
+        <textarea class="item-textarea" placeholder="其他备注信息..." value="{{form.note}}" data-field="note" bindinput="onInputChange" />
+      </view>
+    </view>
+
+    <!-- 图片上传 -->
+    <view class="form-group">
+      <text class="group-title">附件图片</text>
+      
+      <view class="image-grid">
+        <view class="image-item" wx:for="{{form.images}}" wx:key="*this">
+          <image class="preview-image" src="{{item}}" mode="aspectFill" />
+          <view class="delete-btn" catchtap="onDeleteImage" data-index="{{index}}">
+            <text class="delete-icon">×</text>
+          </view>
+        </view>
+        
+        <view class="image-item add-btn" bindtap="onChooseImage" wx:if="{{form.images.length < 9}}">
+          <text class="add-icon">+</text>
+          <text class="add-text">添加照片</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="save-section">
+    <button class="save-btn" bindtap="onSave" loading="{{saving}}">保存记录</button>
+  </view>
+</view>

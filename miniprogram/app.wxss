@@ -1,0 +1,170 @@
+@import "./components/custom-tabbar/custom-tabbar.wxss";
+
+/* ========== 咪咪守护站 - 清新绿色主题 ========== */
+page {
+  --primary: #4CAF50;
+  --primary-light: #81C784;
+  --primary-dark: #388E3C;
+  --accent: #FF9800;
+  --accent-light: #FFB74D;
+  --bg-main: #F5F9F5;
+  --bg-card: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border-color: #E8F5E9;
+  --shadow-sm: 0 2rpx 8rpx rgba(76, 175, 80, 0.08);
+  --shadow-md: 0 4rpx 16rpx rgba(76, 175, 80, 0.12);
+  --shadow-lg: 0 8rpx 32rpx rgba(76, 175, 80, 0.16);
+  
+  background-color: var(--bg-main);
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  color: var(--text-primary);
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+/* ========== 通用卡片样式 ========== */
+.card {
+  background: var(--bg-card);
+  border-radius: 24rpx;
+  padding: 28rpx;
+  box-shadow: var(--shadow-md);
+}
+
+.card-large {
+  background: var(--bg-card);
+  border-radius: 32rpx;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ========== 按钮样式 ========== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #FFFFFF;
+  font-size: 28rpx;
+  font-weight: 600;
+  padding: 24rpx 48rpx;
+  border-radius: 48rpx;
+  border: none;
+  box-shadow: 0 4rpx 16rpx rgba(76, 175, 80, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:active {
+  transform: scale(0.96);
+  box-shadow: 0 2rpx 8rpx rgba(76, 175, 80, 0.2);
+}
+
+.btn-secondary {
+  background: rgba(76, 175, 80, 0.1);
+  color: var(--primary);
+  font-size: 26rpx;
+  font-weight: 600;
+  padding: 20rpx 36rpx;
+  border-radius: 40rpx;
+  border: 2rpx solid var(--primary);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  color: #FFFFFF;
+  font-size: 28rpx;
+  font-weight: 600;
+  padding: 24rpx 48rpx;
+  border-radius: 48rpx;
+  border: none;
+  box-shadow: 0 4rpx 16rpx rgba(255, 152, 0, 0.3);
+}
+
+/* ========== 文字样式 ========== */
+.text-xs { font-size: 22rpx; }
+.text-sm { font-size: 26rpx; }
+.text-md { font-size: 30rpx; }
+.text-lg { font-size: 36rpx; }
+.text-xl { font-size: 44rpx; }
+
+.text-primary { color: var(--primary); }
+.text-accent { color: var(--accent); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* ========== 布局辅助 ========== */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-center { align-items: center; justify-content: center; }
+.flex-between { justify-content: space-between; }
+.gap-sm { gap: 12rpx; }
+.gap-md { gap: 20rpx; }
+.gap-lg { gap: 32rpx; }
+
+/* ========== 标签样式 ========== */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.tag-primary {
+  background: rgba(76, 175, 80, 0.15);
+  color: var(--primary);
+}
+
+.tag-accent {
+  background: rgba(255, 152, 0, 0.15);
+  color: var(--accent);
+}
+
+.tag-urgent {
+  background: rgba(244, 67, 54, 0.15);
+  color: #F44336;
+}
+
+/* ========== 安全区域 ========== */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ========== 动画 ========== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ========== Custom Tabbar ========== */
+.custom-tabbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--bg-card);
+  box-shadow: 0 -4rpx 20rpx rgba(76, 175, 80, 0.1);
+  border-top-left-radius: 32rpx;
+  border-top-right-radius: 32rpx;
+}

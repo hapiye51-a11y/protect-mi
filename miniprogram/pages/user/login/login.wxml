@@ -1,0 +1,72 @@
+<view class="container" style="padding-top: {{statusBarHeight}}px;">
+  <!-- 背景装饰 -->
+  <view class="bg-decoration">
+    <view class="circle circle-1"></view>
+    <view class="circle circle-2"></view>
+    <view class="circle circle-3"></view>
+  </view>
+
+  <!-- 主要内容 -->
+  <view class="content">
+    <!-- Logo 区域 -->
+    <view class="logo-section">
+      <view class="cat-polaroid">
+        <!-- 猫咪展示区 -->
+        <view class="cat-frame">
+          <!-- Emoji 模式 -->
+          <view class="cat-emoji-mode">
+            <text class="big-emoji">{{randomCatEmoji}}</text>
+            <view class="emoji-bg"></view>
+          </view>
+          <!-- 品牌猫爪标识 -->
+          <view class="paw-mark">🐾</view>
+        </view>
+        <!-- Logo 文字 -->
+        <text class="logo-text">守护咪</text>
+        <text class="logo-slogan">用爱守护每一只流浪猫 🐾</text>
+      </view>
+    </view>
+
+    <!-- 登录按钮区域 -->
+    <view class="login-section">
+      <button
+        class="login-btn {{isLogging || !agreed ? 'disabled' : ''}}"
+        hover-class="login-btn-hover"
+        disabled="{{isLogging || !agreed}}"
+        bindtap="onWeChatLogin">
+        <view class="btn-content">
+          <text class="wechat-icon">💬</text>
+          <text class="btn-text">{{isLogging ? '登录中...' : '微信一键登录'}}</text>
+        </view>
+      </button>
+
+      <!-- 协议勾选 -->
+      <view class="agreement-row">
+        <view class="checkbox {{agreed ? 'checked' : ''}}" bindtap="toggleAgreement">
+          <text class="check-icon" wx:if="{{agreed}}">✓</text>
+        </view>
+        <view class="agreement-text-wrap">
+          <text class="agreement-text">登录即同意</text>
+          <text class="link" bindtap="goToAgreement" data-type="user">《用户协议》</text>
+          <text class="agreement-text">与</text>
+          <text class="link" bindtap="goToAgreement" data-type="privacy">《隐私政策》</text>
+        </view>
+      </view>
+      
+      <!-- 跳过登录 -->
+      <view class="skip-row" bindtap="onSkipLogin">
+        <text class="skip-text">暂不登录，先逛逛</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部信息 -->
+  <view class="footer">
+    <view class="footer-cats">
+      <text class="cat-emoji">🐱</text>
+      <text class="cat-emoji">🐈</text>
+      <text class="cat-emoji">😺</text>
+    </view>
+    <text class="version-text">v{{version}}</text>
+  </view>
+</view>

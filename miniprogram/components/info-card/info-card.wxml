@@ -1,0 +1,9 @@
+<view class="info-card {{customClass}}" bindtap="onCardTap">
+  <view class="card-icon" wx:if="{{icon}}">{{icon}}</view>
+  <view class="card-content">
+    <text class="card-title">{{title}}</text>
+    <text class="card-description" wx:if="{{description}}">{{description}}</text>
+    <slot></slot>
+  </view>
+  <view class="card-arrow" wx:if="{{showArrow}}">›</view>
+</view>

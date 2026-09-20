@@ -1,0 +1,247 @@
+/* 动态详情页 */
+.page {
+  min-height: 100vh;
+  background: #F5F9F5;
+  padding-bottom: 120rpx;
+}
+
+/* 动态区 */
+.moment {
+  background: #FFFFFF;
+  padding: 24rpx;
+  margin: 24rpx;
+  border-radius: 20rpx;
+}
+
+.moment-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.moment-avatar {
+  width: 72rpx;
+  height: 72rpx;
+  background: #E8F5E9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.moment-avatar text {
+  font-size: 36rpx;
+}
+
+.moment-user {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.moment-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.moment-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.moment-content {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 20rpx;
+}
+
+.moment-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.moment-images image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 12rpx;
+}
+
+.moment-footer {
+  display: flex;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #F0F0F0;
+}
+
+.moment-action text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 评论列表 */
+.comments {
+  background: #FFFFFF;
+  margin: 0 24rpx 24rpx;
+  border-radius: 20rpx;
+  padding: 24rpx;
+}
+
+.c-header {
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.c-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.c-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.c-item:last-child {
+  border-bottom: none;
+}
+
+.c-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.c-avatar {
+  width: 48rpx;
+  height: 48rpx;
+  background: #E8F5E9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12rpx;
+}
+
+.c-avatar text {
+  font-size: 24rpx;
+}
+
+.c-name {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.c-time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.c-content {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 12rpx;
+  padding-left: 60rpx;
+}
+
+.c-actions {
+  display: flex;
+  gap: 24rpx;
+  padding-left: 60rpx;
+}
+
+.c-action text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 回复列表 */
+.replies {
+  margin-left: 60rpx;
+  margin-top: 12rpx;
+  padding: 16rpx;
+  background: #F5F9F5;
+  border-radius: 12rpx;
+}
+
+.reply-item {
+  padding: 8rpx 0;
+}
+
+.reply-name {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.reply-to {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.reply-content {
+  font-size: 26rpx;
+  color: #333;
+}
+
+/* 空状态 */
+.empty {
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.empty-icon {
+  display: block;
+  font-size: 48rpx;
+  margin-bottom: 12rpx;
+}
+
+.empty-text {
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* 底部评论 */
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  background: #FFFFFF;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.input {
+  flex: 1;
+  height: 72rpx;
+  padding: 0 20rpx;
+  background: #F5F9F5;
+  border-radius: 36rpx;
+  font-size: 28rpx;
+}
+
+.btn {
+  margin-left: 16rpx;
+  padding: 16rpx 32rpx;
+  background: #4CAF50;
+  border-radius: 36rpx;
+}
+
+.btn text {
+  font-size: 28rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+}

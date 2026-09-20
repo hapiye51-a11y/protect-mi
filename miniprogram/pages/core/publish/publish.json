@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "发布救助",
+  "navigationBarBackgroundColor": "#4CAF50",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "custom-tabbar": "/components/custom-tabbar/custom-tabbar"
+  }
+}

@@ -1,0 +1,62 @@
+<view class="container">
+  <!-- 顶部统计 -->
+  <view class="stats-card">
+    <view class="stats-header">
+      <text class="stats-title">我的投喂记录</text>
+    </view>
+    <view class="stats-row">
+      <view class="stat-item">
+        <text class="stat-num">{{totalTimes}}</text>
+        <text class="stat-label">累计打卡</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{totalCats}}</text>
+        <text class="stat-label">投喂猫咪</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{totalDays}}</text>
+        <text class="stat-label">打卡天数</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打卡按钮 -->
+  <view class="checkin-section">
+    <view class="checkin-btn {{canCheckin ? '' : 'disabled'}}" bindtap="doCheckin">
+      <text class="checkin-icon">🍱</text>
+      <text class="checkin-text">{{canCheckin ? '立即打卡' : '今日已打卡'}}</text>
+    </view>
+    <text class="checkin-hint">在投喂点附近即可打卡，记录你的爱心行为</text>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="history-section">
+    <view class="section-header">
+      <text class="section-title">打卡记录</text>
+      <text class="section-more">查看全部</text>
+    </view>
+    
+    <view class="history-list" wx:if="{{records.length > 0}}">
+      <view class="history-item" wx:for="{{records}}" wx:key="id">
+        <view class="history-left">
+          <view class="history-icon">🐱</view>
+          <view class="history-info">
+            <text class="history-title">{{item.cats}}只猫咪</text>
+            <text class="history-time">{{item.time}}</text>
+          </view>
+        </view>
+        <view class="history-right">
+          <text class="history-location">{{item.location}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty-state" wx:if="{{records.length === 0}}">
+      <text class="empty-icon">📭</text>
+      <text class="empty-text">还没有打卡记录</text>
+      <text class="empty-hint">去投喂猫咪，开始你的爱心之旅吧</text>
+    </view>
+  </view>
+</view>

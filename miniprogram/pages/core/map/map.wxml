@@ -1,0 +1,219 @@
+<view class="container">
+  <!-- 完整地图 -->
+  <map
+    id="radarMap"
+    class="full-map"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}"
+    scale="{{scale}}"
+    show-location="{{true}}"
+    markers="{{markers}}"
+    bindmarkertap="onMarkerTap"
+    enable-3D="{{false}}"
+    show-compass="{{true}}"
+    enable-overlooking="{{false}}"
+    enable-zoom="{{true}}"
+    enable-scroll="{{true}}"
+    enable-rotate="{{false}}">
+
+    <!-- 顶部简洁标题 -->
+    <cover-view class="top-header">
+      <cover-view class="header-content">
+        <cover-view class="header-title">守护雷达</cover-view>
+        <cover-view class="header-stats">{{stats.totalMarkers}} 个标记点</cover-view>
+      </cover-view>
+    </cover-view>
+
+    <!-- 右侧快捷按钮 -->
+    <cover-view class="quick-actions">
+      <cover-view class="action-btn" bindtap="moveToMyLocation">
+        <cover-view class="action-icon">📍</cover-view>
+      </cover-view>
+      <cover-view class="action-btn report-btn" bindtap="addNewMarker">
+        <cover-view class="action-icon">➕</cover-view>
+        <cover-view class="action-label">标记</cover-view>
+      </cover-view>
+    </cover-view>
+  </map>
+
+  <!-- 底部简洁菜单 -->
+  <view class="bottom-menu">
+    <view class="menu-indicator" bindtap="toggleMenu">
+      <view class="indicator-bar"></view>
+    </view>
+
+    <!-- 快速预览（收起时显示） -->
+    <view class="menu-preview" wx:if="{{!showMenu}}">
+      <view class="preview-item" bindtap="onRescuePoints">
+        <view class="preview-icon" style="background: #FFE5CC;">🆘</view>
+        <text class="preview-text">救助点</text>
+      </view>
+      <view class="preview-item" bindtap="onFeedingCheckin">
+        <view class="preview-icon" style="background: #E8F5E9;">🍱</view>
+        <text class="preview-text">投喂打卡</text>
+      </view>
+      <view class="preview-item" bindtap="onLeaderboard">
+        <view class="preview-icon" style="background: #FFF9C4;">🏆</view>
+        <text class="preview-text">榜单</text>
+      </view>
+      <view class="preview-item" bindtap="toggleMenu">
+        <view class="preview-icon more-icon">⋯</view>
+        <text class="preview-text">更多</text>
+      </view>
+    </view>
+
+    <!-- 完整菜单（展开时显示） -->
+    <view class="menu-grid-full" wx:if="{{showMenu}}">
+      <view class="menu-section-title">
+        <text class="section-icon">🗺️</text>
+        <text class="section-text">地图功能</text>
+      </view>
+
+      <view class="menu-grid">
+        <view class="menu-item" hover-class="menu-item-hover" bindtap="onRescuePoints">
+          <view class="item-icon-wrapper" style="background: #FFE5CC;">
+            <text class="item-icon">🆘</text>
+          </view>
+          <text class="item-title">周边救助点</text>
+          <text class="item-desc">查看附近求助</text>
+        </view>
+
+        <view class="menu-item" hover-class="menu-item-hover" bindtap="onFeedingCheckin">
+          <view class="item-icon-wrapper" style="background: #E8F5E9;">
+            <text class="item-icon">🍱</text>
+          </view>
+          <text class="item-title">投喂打卡</text>
+          <text class="item-desc">记录爱心投喂</text>
+        </view>
+
+        <view class="menu-item" hover-class="menu-item-hover" bindtap="onSafeRoute">
+          <view class="item-icon-wrapper" style="background: #FFF9C4;">
+            <text class="item-icon">🛤️</text>
+          </view>
+          <text class="item-title">安全路线</text>
+          <text class="item-desc">避开风险区域</text>
+        </view>
+
+        <view class="menu-item" hover-class="menu-item-hover" bindtap="onLeaderboard">
+          <view class="item-icon-wrapper" style="background: #FFCDD2;">
+            <text class="item-icon">🏆</text>
+          </view>
+          <text class="item-title">爱心榜单</text>
+          <text class="item-desc">志愿者排行</text>
+        </view>
+
+        <view class="menu-item" hover-class="menu-item-hover" bindtap="onFeedingMap">
+          <view class="item-icon-wrapper" style="background: #E1BEE7;">
+            <text class="item-icon">🐾</text>
+          </view>
+          <text class="item-title">投喂点位</text>
+          <text class="item-desc">定点投喂位置</text>
+        </view>
+
+        <view class="menu-item" hover-class="menu-item-hover" bindtap="onSafeZones">
+          <view class="item-icon-wrapper" style="background: #B2DFDB;">
+            <text class="item-icon">🛡️</text>
+          </view>
+          <text class="item-title">风险区域</text>
+          <text class="item-desc">需要避让</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部详情面板 -->
+  <view class="detail-panel {{showPanel ? 'show' : ''}}" wx:if="{{panelData}}">
+    <view class="panel-header">
+      <view class="panel-title-row">
+        <text class="panel-icon">
+          {{panelData.level ? '⚠️' : (panelData.catCount ? '🐱' : '🆘')}}
+        </text>
+        <text class="panel-title">{{panelData.title}}</text>
+      </view>
+      <view class="panel-close" bindtap="closePanel">
+        <text class="close-icon">✕</text>
+      </view>
+    </view>
+
+    <view class="panel-content">
+      <!-- 风险区域信息 -->
+      <view wx:if="{{panelData.level}}" class="info-section">
+        <view class="info-row">
+          <text class="info-label">风险等级</text>
+          <view class="risk-badge risk-{{panelData.level}}">
+            {{panelData.levelText}}
+          </view>
+        </view>
+        <view class="info-row">
+          <text class="info-label">描述</text>
+          <text class="info-value">{{panelData.description}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">举报次数</text>
+          <text class="info-value">{{panelData.reportCount}}次</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">最后更新</text>
+          <text class="info-value">{{panelData.lastUpdate}}</text>
+        </view>
+        <view class="warning-box">
+          <text class="warning-icon">⚠️</text>
+          <text class="warning-text">请注意安全，避免单独前往</text>
+        </view>
+      </view>
+
+      <!-- 猫咪点位信息 -->
+      <view wx:if="{{panelData.catCount}}" class="info-section">
+        <view class="info-row">
+          <text class="info-label">猫咪数量</text>
+          <text class="info-value">约{{panelData.catCount}}只</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">投喂状态</text>
+          <text class="info-value">{{panelData.hasFeeder ? '已有志愿者定点投喂' : '无固定投喂'}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">描述</text>
+          <text class="info-value">{{panelData.description}}</text>
+        </view>
+        <view class="tips-box">
+          <text class="tips-icon">💝</text>
+          <text class="tips-text">欢迎加入投喂志愿者行列</text>
+        </view>
+      </view>
+
+      <!-- 救助信息 -->
+      <view wx:if="{{panelData.status}}" class="info-section">
+        <view class="info-row">
+          <text class="info-label">救助状态</text>
+          <view class="status-badge urgent">
+            {{panelData.status === 'urgent' ? '🆘 紧急' : '⏳ 进行中'}}
+          </view>
+        </view>
+        <view class="info-row">
+          <text class="info-label">描述</text>
+          <text class="info-value">{{panelData.description}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">发布时间</text>
+          <text class="info-value">{{panelData.reportTime}}</text>
+        </view>
+        <view class="urgent-box">
+          <text class="urgent-icon">🆘</text>
+          <text class="urgent-text">请有能力的爱心人士伸出援手</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="panel-actions">
+      <button class="action-btn secondary" bindtap="closePanel">关闭</button>
+      <button class="action-btn primary" bindtap="viewMarkerDetail">导航前往</button>
+    </view>
+  </view>
+
+  <!-- 遮罩层 -->
+  <view class="panel-mask {{showPanel ? 'show' : ''}}" bindtap="closePanel"></view>
+</view>
+
+<!-- 自定义TabBar -->
+<custom-tabbar currentPath="pages/core/map/map" />

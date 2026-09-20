@@ -1,0 +1,121 @@
+<view class="container">
+  <!-- 相册头部 -->
+  <view class="album-header">
+    <view class="header-info">
+      <text class="cat-name">{{catName}}</text>
+      <text class="album-title">相册 ({{totalCount}})</text>
+    </view>
+    <view class="header-stats">
+      <text class="stat-item">生活照 {{lifeCount}}</text>
+      <text class="stat-item">救助时 {{rescueCount}}</text>
+    </view>
+  </view>
+
+  <!-- 分类标签 -->
+  <view class="category-tabs">
+    <view class="category-tab {{activeCategory === 'all' ? 'active' : ''}}" bindtap="switchCategory" data-type="all">
+      <text class="tab-text">全部</text>
+    </view>
+    <view class="category-tab {{activeCategory === 'life' ? 'active' : ''}}" bindtap="switchCategory" data-type="life">
+      <text class="tab-icon">📸</text>
+      <text class="tab-text">生活照</text>
+    </view>
+    <view class="category-tab {{activeCategory === 'rescue' ? 'active' : ''}}" bindtap="switchCategory" data-type="rescue">
+      <text class="tab-icon">🆘</text>
+      <text class="tab-text">救助时</text>
+    </view>
+    <view class="category-tab {{activeCategory === 'medical' ? 'active' : ''}}" bindtap="switchCategory" data-type="medical">
+      <text class="tab-icon">🏥</text>
+      <text class="tab-text">就医</text>
+    </view>
+  </view>
+
+  <!-- 照片选择区 - 5个格子 -->
+  <view class="photo-slots">
+    <view class="photo-slot" wx:for="{{[0,1,2,3,4]}}" wx:key="*this" bindtap="onSlotTap" bindlongpress="onLongPressPhoto" data-index="{{index}}">
+      <image wx:if="{{photos[index]}}" class="slot-image" src="{{photos[index].url}}" mode="aspectFill" />
+      <view wx:elif="{{isOwner}}" class="slot-empty">
+        <text class="slot-plus">+</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 非创建者提示 -->
+  <view class="owner-tip" wx:if="{{!isOwner && totalCount === 0}}">
+    <text class="tip-icon">📷</text>
+    <text class="tip-text">暂无照片</text>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>
+
+<!-- 上传弹窗 -->
+<view class="upload-modal-mask" wx:if="{{showUploadModal}}">
+  <view class="upload-modal" catchtap="">
+    <view class="modal-header">
+      <text class="modal-title">上传照片</text>
+      <text class="modal-close" bindtap="hideUploadModal">×</text>
+    </view>
+
+    <view class="modal-body" catchtap="">
+      <!-- 分类选择 -->
+      <view class="form-item">
+        <text class="form-label">照片分类</text>
+        <view class="category-options">
+          <view class="category-option {{uploadData.category === 'life' ? 'active' : ''}}" 
+            catchtap="selectCategory" data-type="life">
+            <text class="option-icon">📸</text>
+            <text class="option-text">生活照</text>
+          </view>
+          <view class="category-option {{uploadData.category === 'rescue' ? 'active' : ''}}" 
+            catchtap="selectCategory" data-type="rescue">
+            <text class="option-icon">🆘</text>
+            <text class="option-text">救助时</text>
+          </view>
+          <view class="category-option {{uploadData.category === 'medical' ? 'active' : ''}}" 
+            catchtap="selectCategory" data-type="medical">
+            <text class="option-icon">🏥</text>
+            <text class="option-text">就医</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 日期选择 -->
+      <view class="form-item">
+        <text class="form-label">拍摄日期</text>
+        <picker mode="date" value="{{uploadData.date}}" bindchange="onDateChange">
+          <view class="date-picker">
+            <text class="date-text">{{uploadData.date || '请选择日期'}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 备注 -->
+      <view class="form-item">
+        <text class="form-label">备注（可选）</text>
+        <textarea class="note-input" 
+          placeholder="照片描述..." 
+          value="{{uploadData.note}}"
+          bindinput="onNoteInput"
+          maxlength="100"
+          catchtap="" />
+      </view>
+
+      <!-- 照片预览 -->
+      <view class="form-item">
+        <text class="form-label">已选照片</text>
+        <view class="photo-preview">
+          <image class="preview-image" src="{{uploadData.tempUrl}}" mode="aspectFill" />
+          <view class="delete-btn" bindtap="deletePhoto">×</view>
+          <view class="change-btn" bindtap="rechoosePhoto">更换</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="modal-footer">
+      <button class="cancel-btn" bindtap="hideUploadModal">取消</button>
+      <button class="confirm-btn" bindtap="confirmUpload" loading="{{uploading}}">上传</button>
+    </view>
+  </view>
+</view>

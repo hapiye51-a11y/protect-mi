@@ -1,0 +1,47 @@
+.info-card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 32rpx;
+  margin: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.info-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+  font-size: 56rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.card-description {
+  font-size: 26rpx;
+  color: #999999;
+  line-height: 1.5;
+}
+
+.card-arrow {
+  font-size: 48rpx;
+  color: #CCCCCC;
+  margin-left: 16rpx;
+  flex-shrink: 0;
+}

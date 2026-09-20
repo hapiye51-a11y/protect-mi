@@ -1,0 +1,60 @@
+<view class="container">
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{isEmpty && !loading}}">
+    <text class="empty-icon">📝</text>
+    <text class="empty-text">还没有发布动态</text>
+    <text class="empty-hint">快去分享你和猫咪的故事吧</text>
+    <button class="publish-btn" bindtap="onPublish">发布动态</button>
+  </view>
+
+  <!-- 动态列表 -->
+  <view class="moments-list" wx:if="{{!isEmpty}}">
+    <view 
+      class="moment-item" 
+      wx:for="{{moments}}" 
+      wx:key="_id"
+      bindtap="onMomentTap"
+      data-id="{{item._id}}">
+      
+      <!-- 动态内容 -->
+      <view class="moment-content">
+        <text class="moment-text">{{item.content}}</text>
+        <view class="moment-images" wx:if="{{item.images && item.images.length > 0}}">
+          <image 
+            class="moment-image" 
+            src="{{img}}" 
+            mode="aspectFill"
+            wx:for="{{item.images}}" 
+            wx:for-item="img"
+            wx:key="*this" />
+        </view>
+      </view>
+
+      <!-- 动态信息 -->
+      <view class="moment-info">
+        <text class="moment-time">{{item.createTime}}</text>
+        <view class="moment-stats">
+          <text class="stat-item">❤️ {{item.likes || 0}}</text>
+          <text class="stat-item">💬 {{item.comments || 0}}</text>
+        </view>
+      </view>
+
+      <!-- 删除按钮 -->
+      <view class="moment-actions">
+        <button class="delete-btn" catchtap="onDelete" data-id="{{item._id}}">
+          <text class="delete-icon">🗑️</text>
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 底部发布按钮 -->
+  <view class="publish-fab" bindtap="onPublish" wx:if="{{!isEmpty}}">
+    <text class="fab-icon">➕</text>
+  </view>
+</view>

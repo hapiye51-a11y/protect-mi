@@ -1,0 +1,73 @@
+<view class="page">
+  <!-- 问题 -->
+  <view class="question">
+    <view class="q-header">
+      <text class="q-type">{{question.typeText}}</text>
+      <text class="q-time">{{question.time}}</text>
+    </view>
+    <text class="q-title">{{question.question}}</text>
+    <text class="q-author">提问者：{{question.author}}</text>
+    
+    <!-- 图片 -->
+    <view class="q-images" wx:if="{{question.images && question.images.length > 0}}">
+      <image wx:for="{{question.images}}" wx:key="*this" src="{{item}}" mode="aspectFill" bindtap="previewImage" data-url="{{item}}" />
+    </view>
+    
+    <!-- 描述 -->
+    <text class="q-content" wx:if="{{question.content}}">{{question.content}}</text>
+  </view>
+
+  <!-- 回答列表 -->
+  <view class="answers">
+    <view class="a-header">
+      <text class="a-title">回答 ({{answers.length}})</text>
+    </view>
+    
+    <view class="a-list" wx:if="{{answers.length > 0}}">
+      <view class="a-item" wx:for="{{answers}}" wx:key="id">
+        <view class="a-user">
+          <view class="a-avatar"><text>🐱</text></view>
+          <text class="a-name">{{item.author}}</text>
+          <text class="a-time">{{item.time}}</text>
+        </view>
+        <text class="a-content">{{item.content}}</text>
+        <view class="a-actions">
+          <view class="a-action" bindtap="likeAnswer" data-id="{{item.id}}">
+            <text>{{item.liked ? '❤️' : '🤍'}} {{item.likes}}</text>
+          </view>
+          <view class="a-action" bindtap="showReplies" data-id="{{item.id}}">
+            <text>💬 {{item.replies ? item.replies.length : 0}}</text>
+          </view>
+          <view class="a-action" bindtap="replyTo" data-id="{{item.id}}" data-author="{{item.author}}">
+            <text>回复</text>
+          </view>
+        </view>
+        
+        <!-- 回复列表 -->
+        <view class="replies" wx:if="{{item.showReplies && item.replies && item.replies.length > 0}}">
+          <view class="reply-item" wx:for="{{item.replies}}" wx:for-item="reply" wx:key="id">
+            <view class="reply-user">
+              <text class="reply-name">{{reply.author}}</text>
+              <text class="reply-to" wx:if="{{reply.toAuthor}}">回复 {{reply.toAuthor}}</text>
+            </view>
+            <text class="reply-content">{{reply.content}}</text>
+            <text class="reply-time">{{reply.time}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty" wx:if="{{answers.length === 0}}">
+      <text class="empty-icon">💬</text>
+      <text class="empty-text">暂无回答，快来抢答吧！</text>
+    </view>
+  </view>
+
+  <!-- 回答按钮 -->
+  <view class="footer">
+    <input class="input" placeholder="{{replyToAuthor ? '回复 ' + replyToAuthor + '...' : '写下你的回答...'}}" value="{{myAnswer}}" bindinput="setMyAnswer" />
+    <view class="btn" bindtap="submitAnswer">
+      <text>发送</text>
+    </view>
+  </view>
+</view>
